@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IconScope - Admin Publisher</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: #f8fafc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            color: #1e293b;
+        }
+
+        .container {
+            background: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            width: 100%;
+            max-width: 500px;
+        }
+
+        h1 {
+            margin-top: 0;
+            color: #6366f1;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.5rem;
+            font-family: inherit;
+            box-sizing: border-box;
+        }
+
+        button {
+            background: #6366f1;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: background 0.2s;
+        }
+
+        button:hover {
+            background: #4f46e5;
+        }
+
+        .status {
+            margin-top: 1rem;
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            display: none;
+            text-align: center;
+        }
+
+        .success {
+            background: #dcfce7;
+            color: #166534;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>📢 Publish Notification</h1>
+        <p>Send a real-time update to all subscribed users.</p>
+
+        <div class="form-group">
+            <label>Notification Title</label>
+            <input type="text" id="title" placeholder="e.g., New 3D Icons Released!">
+        </div>
+
+        <div class="form-group">
+            <label>Message Body</label>
+            <textarea id="body" rows="4" placeholder="Enter your update message here..."></textarea>
+        </div>
+
+        <button onclick="publishNotification()">🚀 Publish Now</button>
+        <div id="status" class="status"></div>
+    </div>
+
+    <script>
+        function publishNotification() {
+            const title = document.getElementById('title').value;
+            const body = document.getElementById('body').value;
+            const statusDiv = document.getElementById('status');
+
+            if (!title || !body) {
+                alert("Please fill in both fields.");
+                return;
+            }
+
+            // Create notification payload
+            const payload = {
+                title: title,
+                body: body,
+                timestamp: new Date().getTime() // Helper to ensure 'storage' event fires even if content is same
+            };
+
+            // Update LocalStorage to trigger 'storage' event in other tabs
+            localStorage.setItem('iconscope_latest_post', JSON.stringify(payload));
+
+            // Feedback
+            statusDiv.textContent = "✅ Notification Published Successfully!";
+            statusDiv.className = "status success";
+            statusDiv.style.display = "block";
+
+            // Clear inputs
+            document.getElementById('title').value = "";
+            document.getElementById('body').value = "";
+
+            setTimeout(() => {
+                statusDiv.style.display = "none";
+            }, 3000);
+        }
+    </script>
+</body>
+
+</html>

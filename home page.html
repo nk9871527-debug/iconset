@@ -1,0 +1,1125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IconScope | Access Vector Icons & Stickers</title>
+
+    <!-- Google Fonts: Outfit (Modern, Geometric) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+    <style>
+        :root {
+            --primary: #4effbf;
+            --secondary: #6366f1;
+            --accent: #ec4899;
+            --dark: #0f172a;
+            --light: #f8fafc;
+            --glass-bg: rgba(255, 255, 255, 0.7);
+            --glass-border: rgba(255, 255, 255, 0.4);
+            --glow: 0 0 20px rgba(99, 102, 241, 0.3);
+            --font-main: 'Outfit', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: var(--font-main);
+        }
+
+        body {
+            background: linear-gradient(135deg, #f0f4ff 0%, #eef2ff 100%);
+            background-attachment: fixed;
+            color: var(--dark);
+            min-height: 100vh;
+            overflow-x: hidden;
+            font-size: 16px;
+        }
+
+        /* --- Animations --- */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0px) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-10px) rotate(2deg);
+            }
+
+            100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+        }
+
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* --- Header --- */
+        .app-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 70px;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--glass-border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 5%;
+            z-index: 1000;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03);
+            transition: all 0.3s ease;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 800;
+            font-size: 24px;
+            color: #1e293b;
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+
+        .logo img {
+            width: 32px;
+            height: 32px;
+        }
+
+        .header-menu {
+            display: flex;
+            gap: 20px;
+        }
+
+        .header-menu a {
+            text-decoration: none;
+            color: #64748b;
+            font-weight: 500;
+            font-size: 15px;
+            transition: color 0.3s;
+        }
+
+        .header-menu a:hover {
+            color: var(--secondary);
+        }
+
+        .cta-btn {
+            background: var(--dark);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 99px;
+            font-weight: 600;
+            font-size: 14px;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            /* Increased gap for better spacing */
+        }
+
+        .icon-btn {
+            width: 46px;
+            /* Slightly larger */
+            height: 46px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            /* More transparent */
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #64748b;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        .icon-btn:hover {
+            background: rgba(255, 255, 255, 0.25);
+            color: var(--secondary);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Active/Notification State */
+        .icon-btn.active {
+            color: var(--secondary);
+            border-color: rgba(99, 102, 241, 0.4);
+            background: rgba(99, 102, 241, 0.1);
+            box-shadow: 0 0 15px rgba(99, 102, 241, 0.2);
+        }
+
+        .icon-btn i {
+            font-size: 18px;
+        }
+
+        /* Dark Mode Styles */
+        body.dark-mode {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: #f1f5f9;
+        }
+
+        body.dark-mode .app-header,
+        body.dark-mode .folder-card,
+        body.dark-mode .pill,
+        body.dark-mode .search-bar,
+        body.dark-mode .slide,
+        body.dark-mode footer {
+            background: rgba(30, 41, 59, 0.7);
+            border-color: rgba(255, 255, 255, 0.08);
+            /* Finer border */
+            color: #f1f5f9;
+            backdrop-filter: blur(16px);
+        }
+
+        body.dark-mode .icon-btn {
+            background: rgba(255, 255, 255, 0.03);
+            /* Very subtle glass */
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            color: #94a3b8;
+        }
+
+        body.dark-mode .icon-btn:hover {
+            background: rgba(255, 255, 255, 0.08);
+            color: #fff;
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        body.dark-mode .icon-btn.active {
+            color: #818cf8;
+            /* Lighter indigo for dark mode */
+            border-color: rgba(99, 102, 241, 0.5);
+            background: rgba(99, 102, 241, 0.15);
+            box-shadow: 0 0 20px rgba(99, 102, 241, 0.25);
+        }
+
+        /* Free Section Styles */
+        .free-section {
+            background: #fff;
+            padding: 80px 0;
+            transition: background 0.3s;
+        }
+
+        .free-desc {
+            text-align: center;
+            color: #64748b;
+            margin-top: -30px;
+            margin-bottom: 60px;
+            transition: color 0.3s;
+        }
+
+        body.dark-mode .free-section {
+            background: rgba(30, 41, 59, 0.8);
+        }
+
+        body.dark-mode .free-desc {
+            color: #cbd5e1;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            padding: 120px 20px 60px;
+            text-align: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 6vw, 4.5rem);
+            line-height: 1.1;
+            font-weight: 800;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+            background: linear-gradient(300deg, #3b82f6, #8b5cf6, #ec4899);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientShift 6s ease infinite;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #64748b;
+            max-width: 600px;
+            margin: 0 auto 40px;
+            line-height: 1.6;
+        }
+
+        /* --- Search Bar --- */
+        .search-wrapper {
+            max-width: 700px;
+            margin: 0 auto 60px;
+            position: relative;
+        }
+
+        .search-bar {
+            display: flex;
+            background: white;
+            border-radius: 20px;
+            padding: 8px;
+            box-shadow: 0 20px 40px -10px rgba(99, 102, 241, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .search-bar:focus-within {
+            transform: translateY(-2px) scale(1.01);
+            box-shadow: 0 25px 50px -12px rgba(99, 102, 241, 0.25);
+        }
+
+        .search-select {
+            background: #f1f5f9;
+            border: none;
+            padding: 0 20px;
+            border-radius: 12px;
+            font-weight: 600;
+            color: #334155;
+            cursor: pointer;
+            outline: none;
+        }
+
+        .search-input {
+            flex: 1;
+            border: none;
+            padding: 18px 20px;
+            font-size: 16px;
+            outline: none;
+            background: transparent;
+        }
+
+        .search-btn {
+            background: linear-gradient(135deg, #6366f1, #3b82f6);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 14px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            transition: transform 0.2s;
+        }
+
+        .search-btn:hover {
+            transform: scale(1.05);
+        }
+
+        /* --- 3D Carousel --- */
+        .carousel-section {
+            padding: 40px 0 80px;
+            perspective: 1200px;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+        }
+
+        .carousel-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 900px;
+            height: 400px;
+            transform-style: preserve-3d;
+        }
+
+        .slide {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 280px;
+            height: 380px;
+            background: white;
+            border-radius: 24px;
+            box-shadow:
+                0 20px 40px rgba(0, 0, 0, 0.1),
+                0 0 0 1px rgba(255, 255, 255, 0.5) inset;
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1;
+            opacity: 0;
+            transform-origin: center center;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .slide:hover img {
+            transform: scale(1.1);
+        }
+
+        /* Carousel States */
+        /* Center */
+        .slide.active {
+            opacity: 1;
+            z-index: 10;
+            transform: translate(-50%, -50%) scale(1);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+
+        /* Right */
+        .slide.next {
+            opacity: 0.7;
+            z-index: 5;
+            transform: translate(calc(-50% + 180px), -50%) scale(0.85) rotateY(-10deg);
+            filter: blur(1px);
+        }
+
+        /* Right 2 */
+        .slide.next-2 {
+            opacity: 0.4;
+            z-index: 2;
+            transform: translate(calc(-50% + 320px), -50%) scale(0.7) rotateY(-20deg);
+            filter: blur(2px);
+        }
+
+        /* Left */
+        .slide.prev {
+            opacity: 0.7;
+            z-index: 5;
+            transform: translate(calc(-50% - 180px), -50%) scale(0.85) rotateY(10deg);
+            filter: blur(1px);
+        }
+
+        /* Left 2 */
+        .slide.prev-2 {
+            opacity: 0.4;
+            z-index: 2;
+            transform: translate(calc(-50% - 320px), -50%) scale(0.7) rotateY(20deg);
+            filter: blur(2px);
+        }
+
+        /* Hidden */
+        .slide.hidden {
+            opacity: 0;
+            transform: translate(-50%, -50%) scale(0.5);
+            pointer-events: none;
+        }
+
+
+        /* --- Top Searches Pill Grid --- */
+        .pill-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 80px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .pill {
+            background: white;
+            padding: 10px 24px;
+            border-radius: 99px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #475569;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            /* Soft shadow */
+            transition: all 0.2s;
+            cursor: pointer;
+            border: 1px solid transparent;
+        }
+
+        .pill:hover {
+            transform: translateY(-2px);
+            background: white;
+            color: var(--secondary);
+            border-color: var(--secondary);
+            box-shadow: 0 8px 16px rgba(99, 102, 241, 0.15);
+        }
+
+
+        /* --- Cards Section --- */
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 50px;
+            color: #1e293b;
+        }
+
+        .grid-container {
+            max-width: 1200px;
+            margin: 0 auto 100px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 30px;
+            padding: 0 20px;
+        }
+
+        .folder-card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px 20px;
+            text-align: center;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            position: relative;
+            z-index: 1;
+        }
+
+        .folder-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 20px;
+            padding: 2px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0));
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            transition: background 0.3s;
+        }
+
+        .folder-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .folder-card:hover::before {
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
+        }
+
+        .folder-card img {
+            width: 100px;
+            height: 100px;
+            object-fit: contain;
+            margin-bottom: 20px;
+            transition: transform 0.3s;
+        }
+
+        .folder-card:hover img {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .folder-card h3 {
+            font-size: 18px;
+            font-weight: 600;
+            color: #334155;
+        }
+
+        /* --- Footer --- */
+        footer {
+            background: white;
+            padding: 80px 20px 30px;
+            margin-top: auto;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+        }
+
+        .footer-col h4 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #0f172a;
+        }
+
+        .footer-col p {
+            color: #64748b;
+            margin-bottom: 12px;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .footer-col p:hover {
+            color: var(--secondary);
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid #f1f5f9;
+            color: #94a3b8;
+            font-size: 14px;
+        }
+
+        /* --- Responsive --- */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .carousel-wrapper {
+                height: 350px;
+            }
+
+            .slide {
+                width: 220px;
+                height: 320px;
+            }
+
+            .header-menu {
+                display: none;
+            }
+
+            /* Hide menu on mobile for simplicity */
+        }
+
+        /* Dropdown Menu */
+        .dropdown-menu {
+            position: absolute;
+            top: 60px;
+            right: 0;
+            width: 200px;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 10px;
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            z-index: 1001;
+            transform-origin: top right;
+            animation: scaleIn 0.2s ease;
+        }
+
+        .dropdown-menu.show {
+            display: flex;
+        }
+
+        .dropdown-menu a {
+            padding: 10px 16px;
+            text-decoration: none;
+            color: #334155;
+            font-size: 14px;
+            font-weight: 500;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.2s;
+        }
+
+        .dropdown-menu a:hover {
+            background: rgba(99, 102, 241, 0.1);
+            color: var(--secondary);
+        }
+
+        .dropdown-menu hr {
+            border: none;
+            border-top: 1px solid #e2e8f0;
+            margin: 5px 0;
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <nav class="app-header">
+        <a href="home page.html" class="logo">
+            <img src="images/bg.png" alt="IconScope Brand">
+            IconScope
+        </a>
+        <div class="header-menu">
+            <a href="all icons.html">Explore</a>
+            <a href="designers.html">Designers</a>
+            <a href="pricing.html">Pricing</a>
+        </div>
+        <div class="header-right">
+            <div class="icon-btn" id="notificationBtn"><i class="fa-regular fa-bell"></i></div>
+            <div class="icon-btn" id="darkModeToggle"><i class="fa-solid fa-moon"></i></div>
+            <div class="icon-btn" id="menuBtn" style="position: relative;">
+                <i class="fa-solid fa-bars"></i>
+                <div class="dropdown-menu" id="dropdownMenu">
+                    <a href="#"><i class="fa-regular fa-user"></i> Profile</a>
+                    <a href="#"><i class="fa-solid fa-gear"></i> Settings</a>
+                    <a href="#"><i class="fa-solid fa-shield-halved"></i> Privacy</a>
+                    <hr>
+                    <a href="login.html" style="color: #ef4444;"><i class="fa-solid fa-right-from-bracket"></i>
+                        Logout</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1>Access vector icons & stickers</h1>
+            <p>Unleash your creativity with thousands of free, high-quality 3D icons, vector graphics, and stickers for
+                your next project.</p>
+
+            <div class="search-wrapper">
+                <div class="search-bar">
+                    <select class="search-select">
+                        <option>All icons</option>
+                        <option>3D</option>
+                    </select>
+                    <input type="text" class="search-input" placeholder="What are you looking for?">
+                    <button class="search-btn">
+                        <span style="font-size: 14px;">🔎</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="pill-grid">
+                <a href="all icons.html" class="pill" style="text-decoration: none; color: inherit;">🔥 Trending</a>
+                <a href="education.html" class="pill" style="text-decoration: none; color: inherit;">Education</a>
+                <a href="brands.html" class="pill" style="text-decoration: none; color: inherit;">Business</a>
+                <a href="mobile app icons.html" class="pill" style="text-decoration: none; color: inherit;">Social
+                    Media</a>
+                <a href="computer and hardware.html" class="pill"
+                    style="text-decoration: none; color: inherit;">Technology</a>
+                <a href="all icons.html?q=security" class="pill"
+                    style="text-decoration: none; color: inherit;">Security</a>
+            </div>
+        </section>
+
+        <!-- Carousel -->
+        <section class="carousel-section">
+            <div class="carousel-wrapper" id="carousel">
+                <!-- Using same image paths as original file -->
+                <div class="slide"><img src="images/img1.png" alt="Featured 1"></div>
+                <div class="slide"><img src="images/img2.png" alt="Featured 2"></div>
+                <div class="slide"><img src="images/img3.png" alt="Featured 3"></div>
+                <div class="slide"><img src="images/img4.png" alt="Featured 4"></div>
+                <div class="slide"><img src="images/img5.png" alt="Featured 5"></div>
+                <div class="slide"><img src="images/img6.png" alt="Featured 6"></div>
+            </div>
+        </section>
+
+        <!-- Categories / Tools Grid 1 -->
+        <section class="tools-section">
+            <h2 class="section-title">Curated Collections</h2>
+            <div class="grid-container">
+                <a href="all icons.html" class="folder-card"
+                    style="text-decoration: none; display: block; color: inherit;">
+                    <img src="images/folder1.png" alt="Folder">
+                    <h3>All icons</h3>
+                </a>
+                <a href="website icons.html" class="folder-card"
+                    style="text-decoration: none; display: block; color: inherit;">
+                    <img src="images/folder6.png" alt="Folder">
+                    <h3>Website Icons</h3>
+                </a>
+                <a href="mobile app icons.html" class="folder-card"
+                    style="text-decoration: none; display: block; color: inherit;">
+                    <img src="images/folder5.png" alt="Folder">
+                    <h3>Mobile App</h3>
+                </a>
+                <a href="navigation icons.html" class="folder-card"
+                    style="text-decoration: none; display: block; color: inherit;">
+                    <img src="images/folder4.png" alt="Folder">
+                    <h3>Navigation Icons</h3>
+                </a>
+                <a href="3d icons.html" class="folder-card"
+                    style="text-decoration: none; display: block; color: inherit;">
+                    <img src="images/folder3.png" alt="Folder">
+                    <h3>3D Icons</h3>
+                </a>
+                <a href="premium icons.html" class="folder-card"
+                    style="text-decoration: none; display: block; color: inherit;">
+                    <img src="images/folder2.png" alt="Folder">
+                    <h3>premium</h3>
+                </a>
+
+            </div>
+        </section>
+
+
+        <!-- Free Accessories / Branding -->
+        <section class="free-section">
+            <h2 class="section-title">Professional Design Assets</h2>
+            <p class="free-desc">
+                Organize, create, and ship faster with our premium libraries.
+            </p>
+
+            <div class="grid-container">
+                <a href="brands.html" class="folder-card"
+                    style="text-decoration: none; display: block; color: inherit;">
+                    <img src="images/brands folder.png" alt="Brands">
+                    <h3>Brands</h3>
+                </a>
+                <a href="computer and hardware.html" class="folder-card"
+                    style="text-decoration: none; display: block; color: inherit;">
+                    <img src="images/c and h folder.png" alt="C&H">
+                    <h3>Computer and hardware</h3>
+                </a>
+                <a href="education.html" class="folder-card"
+                    style="text-decoration: none; display: block; color: inherit;">
+                    <img src="images/education folder.png" alt="Education">
+                    <h3>Education</h3>
+                </a>
+                <a href="transport.html" class="folder-card"
+                    style="text-decoration: none; display: block; color: inherit;">
+                    <img src="images/transport folder.png" alt="Transport">
+                    <h3>Transport</h3>
+                </a>
+                <a href="home living icons.html" class="folder-card"
+                    style="text-decoration: none; display: block; color: inherit;">
+                    <img src="images/h and l folder.png" alt="Home">
+                    <h3>Home & Living</h3>
+                </a>
+                <a href="payment.html" class="folder-card"
+                    style="text-decoration: none; display: block; color: inherit;">
+                    <img src="images/payment folder.png" alt="Payment">
+                    <h3>Payment</h3>
+                </a>
+                <a href="sports.html" class="folder-card"
+                    style="text-decoration: none; display: block; color: inherit;">
+                    <img src="images/sports folder.png" alt="Sports">
+                    <h3>Sports</h3>
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col" style="display:flex; flex-direction:column; gap:10px;">
+                <a href="#" class="logo" style="margin-bottom:10px;">
+                    <img src="images/bg.png" alt="Logo">
+                    IconScope
+                </a>
+                <p>The best resource for designers, developers, and creators.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Categories</h4>
+                <p>3D Icons</p>
+                <p>Illustrations</p>
+                <p>Stickers</p>
+                <p>Backgrounds</p>
+            </div>
+            <div class="footer-col">
+                <h4>Company</h4>
+                <p>About Us</p>
+                <p>Licensing</p>
+                <p>Pricing</p>
+                <p>Contact</p>
+            </div>
+            <div class="footer-col">
+                <h4>Resources</h4>
+                <p>Blog</p>
+                <p>Community</p>
+                <p>Help Center</p>
+            </div>
+        </div>
+        <div class="copyright">
+            © 2026 IconScope. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Dark Mode Logic
+            const toggle = document.getElementById('darkModeToggle');
+            const icon = toggle.querySelector('i');
+            const body = document.body;
+
+            // Check saved preference
+            if (localStorage.getItem('iconscopeDarkMode') === 'true') {
+                body.classList.add('dark-mode');
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            }
+
+            toggle.addEventListener('click', () => {
+                body.classList.toggle('dark-mode');
+                const isDark = body.classList.contains('dark-mode');
+                localStorage.setItem('iconscopeDarkMode', isDark);
+
+                if (isDark) {
+                    icon.classList.remove('fa-moon');
+                    icon.classList.add('fa-sun');
+                } else {
+                    icon.classList.remove('fa-sun');
+                    icon.classList.add('fa-moon');
+                }
+            });
+
+            const container = document.getElementById('carousel');
+            const slides = Array.from(container.querySelectorAll('.slide'));
+            const totalSlides = slides.length;
+            let currentIndex = 0;
+
+            function updateCarousel() {
+                slides.forEach((slide, index) => {
+                    // Reset classes
+                    slide.className = 'slide';
+
+                    // Calculate relative position
+                    let diff = (index - currentIndex + totalSlides) % totalSlides;
+
+                    if (diff === 0) {
+                        slide.classList.add('active'); // Center
+                    } else if (diff === 1) {
+                        slide.classList.add('next'); // Right 1
+                    } else if (diff === 2) {
+                        slide.classList.add('next-2'); // Right 2
+                    } else if (diff === totalSlides - 1) {
+                        slide.classList.add('prev'); // Left 1
+                    } else if (diff === totalSlides - 2) {
+                        slide.classList.add('prev-2'); // Left 2
+                    } else {
+                        slide.classList.add('hidden'); // Far away
+                    }
+                });
+            }
+
+            // Auto Advance
+            setInterval(() => {
+                currentIndex = (currentIndex + 1) % totalSlides;
+                updateCarousel();
+            }, 3000);
+
+            // Initial Call
+            updateCarousel();
+
+            // --- Notification System (Publisher-Subscriber) ---
+            const notificationBtn = document.getElementById('notificationBtn');
+            const bellIcon = notificationBtn.querySelector('i');
+            let isSubscribed = localStorage.getItem('iconscopeNotifications') === 'true';
+
+            // Update UI based on state
+            // Update UI based on state
+            function updateNotificationUI() {
+                if (isSubscribed) {
+                    bellIcon.classList.remove('fa-regular');
+                    bellIcon.classList.add('fa-solid');
+                    notificationBtn.classList.add('active'); // Add active styling to button
+                } else {
+                    bellIcon.classList.remove('fa-solid');
+                    bellIcon.classList.add('fa-regular');
+                    notificationBtn.classList.remove('active'); // Remove active styling
+                }
+            }
+
+            // Real-Time Listener (Storage Event)
+            window.addEventListener('storage', (event) => {
+                if (event.key === 'iconscope_latest_post') {
+                    const post = JSON.parse(event.newValue);
+                    if (isSubscribed && Notification.permission === 'granted') {
+                        new Notification(post.title, {
+                            body: post.body,
+                            icon: "images/bg.png"
+                        });
+                    }
+                }
+            });
+
+            // Init
+            updateNotificationUI();
+
+            // Click Handler
+            notificationBtn.addEventListener('click', () => {
+                if (!("Notification" in window)) {
+                    alert("This browser does not support desktop notification");
+                    return;
+                }
+
+                if (Notification.permission === "granted") {
+                    // Toggle Off
+                    isSubscribed = !isSubscribed;
+                    localStorage.setItem('iconscopeNotifications', isSubscribed);
+                    updateNotificationUI();
+                    if (!isSubscribed) {
+                        alert("You have unsubscribed from updates.");
+                    } else {
+                        alert("You are now subscribed to real-time updates!");
+                        new Notification("IconScope", {
+                            body: "Welcome! You will now receive all future updates.",
+                            icon: "images/bg.png"
+                        });
+                    }
+                } else if (Notification.permission !== "denied") {
+                    // Request Permission
+                    Notification.requestPermission().then((permission) => {
+                        if (permission === "granted") {
+                            isSubscribed = true;
+                            localStorage.setItem('iconscopeNotifications', 'true');
+                            updateNotificationUI();
+                            new Notification("IconScope", {
+                                body: "Notifications enabled! You will now receive updates.",
+                                icon: "images/bg.png"
+                            });
+                        }
+                    });
+                } else {
+                    alert("Notifications are denied. Please enable them in your browser settings.");
+                }
+            });
+
+            // Menu Dropdown Logic
+            const menuBtn = document.getElementById('menuBtn');
+            const dropdownMenu = document.getElementById('dropdownMenu');
+
+            if (menuBtn && dropdownMenu) {
+                menuBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    dropdownMenu.classList.toggle('show');
+                });
+
+                // Close on click outside
+                document.addEventListener('click', (e) => {
+                    if (!menuBtn.contains(e.target) && !dropdownMenu.contains(e.target)) {
+                        dropdownMenu.classList.remove('show');
+                    }
+                });
+            }
+
+            // Real-Time Folder Search (Filtering Only)
+            const searchInput = document.querySelector('.search-input');
+            const searchBtn = document.querySelector('.search-btn');
+            const searchSelect = document.querySelector('.search-select');
+
+            if (searchInput) {
+                searchInput.addEventListener('input', function () {
+                    const searchTerm = this.value.toLowerCase().trim();
+                    const folderCards = document.querySelectorAll('.folder-card');
+
+                    folderCards.forEach(card => {
+                        const titleElement = card.querySelector('h3');
+                        if (titleElement) {
+                            const title = titleElement.textContent.toLowerCase();
+                            if (title.includes(searchTerm)) {
+                                card.style.display = 'block';
+                            } else {
+                                card.style.display = 'none';
+                            }
+                        }
+                    });
+                });
+
+                // Redirect Logic (Enter/Click)
+                function handleSearch() {
+                    const query = searchInput.value.trim();
+                    const type = searchSelect ? searchSelect.value : 'All icons';
+
+                    if (query) {
+                        const lowerQ = query.toLowerCase();
+
+                        // Check Dropdown Type
+                        if (type === '3D') {
+                            window.location.href = `3d icons.html?q=${encodeURIComponent(query)}`;
+                            return;
+                        }
+
+                        // Check for Category Keywords (Smart Redirect)
+                        if (lowerQ.includes('educational') || lowerQ.includes('school')) {
+                            window.location.href = 'education.html';
+                        } else if (lowerQ.includes('sport') || lowerQ.includes('game')) {
+                            window.location.href = 'sports.html';
+                        } else if (lowerQ.includes('brand') || lowerQ.includes('logo')) {
+                            window.location.href = 'brands.html';
+                        } else if (lowerQ.includes('computer') || lowerQ.includes('hardware')) {
+                            window.location.href = 'computer and hardware.html';
+                        } else if (lowerQ.includes('mobile') || lowerQ.includes('app')) {
+                            window.location.href = 'mobile app icons.html';
+                        } else if (lowerQ.includes('web')) {
+                            window.location.href = 'website icons.html';
+                        } else if (lowerQ.includes('transport') || lowerQ.includes('car')) {
+                            window.location.href = 'transport.html';
+                        } else if (lowerQ.includes('payment') || lowerQ.includes('card')) {
+                            window.location.href = 'payment.html';
+                        } else if (lowerQ.includes('home') || lowerQ.includes('living')) {
+                            window.location.href = 'home living icons.html';
+                        } else {
+                            // Default to All Icons
+                            window.location.href = `all icons.html?q=${encodeURIComponent(query)}`;
+                        }
+                    }
+                }
+
+                if (searchBtn) {
+                    searchBtn.addEventListener('click', handleSearch);
+                }
+
+                searchInput.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') {
+                        handleSearch();
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>

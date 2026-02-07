@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IconScope – Transport Icons</title>
+
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    :root {
+      --primary-color: #6366f1;
+      --secondary-color: #a855f7;
+      --bg-gradient: linear-gradient(135deg, #eef2ff 0%, #e0e7ff 100%);
+      --glass-bg: rgba(255, 255, 255, 0.65);
+      --glass-border: rgba(255, 255, 255, 0.5);
+      --card-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+      --text-main: #1f2937;
+      --text-light: #6b7280;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Outfit', sans-serif;
+    }
+
+    body {
+      height: 100vh;
+      background: var(--bg-gradient);
+      overflow: hidden;
+      color: var(--text-main);
+    }
+
+    /* Background Decoration */
+    body::before {
+      content: '';
+      position: absolute;
+      top: -10%;
+      right: -5%;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(99, 102, 241, 0.3) 0%, rgba(168, 85, 247, 0.0) 70%);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    body::after {
+      content: '';
+      position: absolute;
+      bottom: -10%;
+      left: -5%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(236, 72, 153, 0.2) 0%, rgba(236, 72, 153, 0.0) 70%);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    /* HEADER */
+    .header {
+      height: 70px;
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--glass-border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 32px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+      font-size: 22px;
+      text-decoration: none;
+      background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .logo img {
+      width: 32px;
+      height: 32px;
+    }
+
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .icon-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.5);
+      border: 1px solid var(--glass-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-light);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .icon-btn:hover {
+      background: #fff;
+      color: var(--primary-color);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    /* Dark Mode Styles */
+    body.dark-mode {
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      color: #f1f5f9;
+    }
+
+    body.dark-mode .header,
+    body.dark-mode .sidebar,
+    body.dark-mode .search-box,
+    body.dark-mode .filter-select {
+      background: rgba(30, 41, 59, 0.8);
+      border-color: rgba(255, 255, 255, 0.1);
+      color: #f1f5f9;
+    }
+
+    body.dark-mode .logo,
+    body.dark-mode .page-title h1,
+    body.dark-mode .menu li a {
+      color: #f1f5f9;
+    }
+
+    body.dark-mode .menu li a:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    body.dark-mode .menu li.active a {
+      background: rgba(99, 102, 241, 0.2);
+      color: #818cf8;
+      border-color: rgba(99, 102, 241, 0.4);
+    }
+
+    body.dark-mode .search-box input {
+      background: transparent;
+      color: #f1f5f9;
+    }
+
+    body.dark-mode .search-box i {
+      color: #cbd5e1 !important;
+    }
+
+    body.dark-mode .icon-card {
+      background: rgba(30, 41, 59, 0.6);
+      border-color: rgba(255, 255, 255, 0.1);
+    }
+
+    body.dark-mode .icon-card:hover {
+      background: rgba(30, 41, 59, 0.9);
+      border-color: var(--primary-color);
+    }
+
+    body.dark-mode .icon-name {
+      color: #e2e8f0;
+    }
+
+    body.dark-mode .section-title {
+      color: #94a3b8;
+    }
+
+    body.dark-mode .icon-btn {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: rgba(255, 255, 255, 0.1);
+      color: #cbd5e1;
+    }
+
+    body.dark-mode .icon-btn:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--primary-color);
+    }
+
+    /* LAYOUT */
+    .container {
+      display: flex;
+      height: 100vh;
+      padding-top: 70px;
+    }
+
+    /* SIDEBAR */
+    .sidebar {
+      width: 260px;
+      background: rgba(255, 255, 255, 0.4);
+      backdrop-filter: blur(10px);
+      border-right: 1px solid var(--glass-border);
+      padding: 24px 16px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .menu {
+      list-style: none;
+    }
+
+    .section-title {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #9ca3af;
+      margin: 20px 0 10px 12px;
+      font-weight: 600;
+    }
+
+    .menu li a {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 16px;
+      border-radius: 12px;
+      text-decoration: none;
+      color: var(--text-main);
+      font-size: 14px;
+      font-weight: 500;
+      transition: all 0.2s ease;
+      margin-bottom: 4px;
+    }
+
+    .menu li a:hover {
+      background: rgba(255, 255, 255, 0.6);
+      transform: translateX(4px);
+    }
+
+    .menu li.active a {
+      background: linear-gradient(to right, rgba(99, 102, 241, 0.1), rgba(168, 85, 247, 0.1));
+      color: var(--primary-color);
+      border: 1px solid rgba(99, 102, 241, 0.2);
+    }
+
+    .menu li i {
+      width: 20px;
+      text-align: center;
+      font-size: 16px;
+    }
+
+    /* CONTENT */
+    .main-content {
+      flex: 1;
+      padding: 24px 40px;
+      overflow-y: auto;
+    }
+
+    .content-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 32px;
+    }
+
+    .page-title h1 {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .page-title span {
+      font-size: 14px;
+      color: var(--text-light);
+      margin-top: 4px;
+      display: block;
+    }
+
+    .toolbar {
+      display: flex;
+      gap: 16px;
+    }
+
+    .search-box {
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      padding: 8px 16px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      width: 250px;
+      transition: all 0.3s ease;
+    }
+
+    .search-box:focus-within {
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+    }
+
+    .search-box input {
+      border: none;
+      outline: none;
+      width: 100%;
+      font-size: 14px;
+    }
+
+    .filter-select {
+      padding: 8px 16px;
+      border-radius: 12px;
+      border: 1px solid #e5e7eb;
+      background: #fff;
+      outline: none;
+      cursor: pointer;
+      font-size: 14px;
+      color: var(--text-main);
+    }
+
+    /* ICON GRID */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+      gap: 24px;
+      padding-bottom: 40px;
+    }
+
+    .icon-card {
+      background: var(--glass-bg);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid var(--glass-border);
+      border-radius: 20px;
+      padding: 20px 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      box-shadow: var(--card-shadow);
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .icon-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      background: rgba(255, 255, 255, 0.85);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      border-color: rgba(99, 102, 241, 0.3);
+    }
+
+    .icon-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0) 100%);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .icon-card:hover::before {
+      opacity: 1;
+    }
+
+    .img-container {
+      width: 70px;
+      height: 70px;
+      transition: transform 0.4s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .icon-card:hover .img-container {
+      transform: scale(1.1) rotate(5deg);
+    }
+
+    .icon-card img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+    }
+
+    .icon-name {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-main);
+      text-align: center;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    /* Download Button */
+    .download-btn {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      width: 32px;
+      height: 32px;
+      background: white;
+      color: var(--primary-color);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      font-size: 14px;
+      opacity: 0;
+      transform: scale(0.8);
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      z-index: 10;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .download-btn:hover {
+      background: var(--primary-color);
+      color: white;
+      transform: scale(1.1);
+    }
+
+    .icon-card:hover .download-btn {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .icon-card {
+      animation: fadeIn 0.6s ease backwards;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .sidebar {
+        display: none;
+      }
+
+      .container {
+        padding-top: 60px;
+      }
+
+      .grid {
+        grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+        gap: 16px;
+      }
+
+      .header {
+        height: 60px;
+        padding: 0 16px;
+      }
+
+      .main-content {
+        padding: 20px;
+      }
+    }
+
+    /* Dropdown Menu */
+    .dropdown-menu {
+      position: absolute;
+      top: 60px;
+      right: 0;
+      width: 200px;
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--glass-border);
+      border-radius: 16px;
+      padding: 10px;
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+      z-index: 1001;
+      transform-origin: top right;
+      animation: scaleIn 0.2s ease;
+    }
+
+    .dropdown-menu.show {
+      display: flex;
+    }
+
+    .dropdown-menu a {
+      padding: 10px 16px;
+      text-decoration: none;
+      color: #334155;
+      font-size: 14px;
+      font-weight: 500;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.2s;
+    }
+
+    .dropdown-menu a:hover {
+      background: rgba(99, 102, 241, 0.1);
+      color: var(--secondary);
+    }
+
+    .dropdown-menu hr {
+      border: none;
+      border-top: 1px solid #e2e8f0;
+      margin: 5px 0;
+    }
+
+    @keyframes scaleIn {
+      from {
+        opacity: 0;
+        transform: scale(0.9);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="header">
+    <a href="home page.html" class="logo">
+      <img src="images/bg.png" alt="Logo">
+      <span>iconScope</span>
+    </a>
+    <div class="header-right">
+      <div class="icon-btn" id="notificationBtn"><i class="fa-regular fa-bell"></i></div>
+      <div class="icon-btn" id="darkModeToggle"><i class="fa-solid fa-moon"></i></div>
+      <div class="icon-btn" id="menuBtn" style="position: relative;">
+        <i class="fa-solid fa-bars"></i>
+        <div class="dropdown-menu" id="dropdownMenu">
+          <a href="#"><i class="fa-regular fa-user"></i> Profile</a>
+          <a href="#"><i class="fa-solid fa-gear"></i> Settings</a>
+          <a href="#"><i class="fa-solid fa-shield-halved"></i> Privacy</a>
+          <hr>
+          <a href="login.html" style="color: #ef4444;"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <ul class="menu">
+        <li>
+          <a href="home page.html"><i class="fa-solid fa-folder"></i> Dashboard</a>
+        </li>
+        <li>
+          <a href="all icons.html"><i class="fa-solid fa-cloud"></i> All</a>
+        </li>
+
+        <div class="section-title">Pages</div>
+
+        <li>
+          <a href="website icons.html"><i class="fa-regular fa-file"></i> Website Icons</a>
+        </li>
+        <li>
+          <a href="mobile app icons.html"><i class="fa-solid fa-mobile-screen"></i> Mobile App Icons</a>
+        </li>
+        <li>
+          <a href="navigation icons.html"><i class="fa-solid fa-compass"></i> Navigation Icons</a>
+        </li>
+        <li>
+          <a href="3d icons.html"><i class="fa-solid fa-cube"></i> 3D Icons</a>
+        </li>
+        <li class="active">
+          <a href="transport.html"><i class="fa-solid fa-car"></i> Transport Icons</a>
+        </li>
+        <li>
+          <a href="home living icons.html"><i class="fa-solid fa-house"></i> Home Living Icons</a>
+        </li>
+        <li>
+          <a href="brands.html"><i class="fa-solid fa-tag"></i> Brands Icons</a>
+        </li>
+        <li>
+          <a href="computer and hardware.html"><i class="fa-solid fa-desktop"></i> Computer & Hardw.</a>
+        </li>
+        <li>
+          <a href="education.html"><i class="fa-solid fa-graduation-cap"></i> Education Icons</a>
+        </li>
+        <li>
+          <a href="sports.html"><i class="fa-solid fa-basketball"></i> Sports Icons</a>
+        </li>
+        <li>
+          <a href="payment.html"><i class="fa-solid fa-credit-card"></i> Payment Icons</a>
+        </li>
+        <li>
+          <a href="premium icons.html"><i class="fa-solid fa-crown"></i> Premium Icons</a>
+        </li>
+      </ul>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+
+      <div class="content-header">
+        <div class="page-title">
+          <h1>Transport Icons</h1>
+          <span>Vehicles and transportation assets for your projects.</span>
+        </div>
+
+        <div class="toolbar">
+          <div class="search-box">
+            <i class="fa-solid fa-search" style="color:#9ca3af"></i>
+            <input type="text" placeholder="Search icons...">
+          </div>
+          <select class="filter-select">
+            <option>Latest</option>
+            <option>Popular</option>
+            <option>A-Z</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- ICONS GRID -->
+      <div class="grid">
+        <!-- AEROPLANE -->
+        <div class="icon-card" style="animation-delay: 0.05s">
+          <div class="img-container"><img src="images/transport icon/aeroplane.png" alt="AEROPLANE"></div>
+          <span class="icon-name">AEROPLANE</span>
+          <a href="images/transport icon/aeroplane.png" download class="download-btn"><i
+              class="fa-solid fa-download"></i></a>
+        </div>
+        <!-- AMBULANCE -->
+        <div class="icon-card" style="animation-delay: 0.06s">
+          <div class="img-container"><img src="images/transport icon/ambulance.png" alt="AMBULANCE"></div>
+          <span class="icon-name">AMBULANCE</span>
+          <a href="images/transport icon/ambulance.png" download class="download-btn"><i
+              class="fa-solid fa-download"></i></a>
+        </div>
+        <!-- BUS -->
+        <div class="icon-card" style="animation-delay: 0.07s">
+          <div class="img-container"><img src="images/transport icon/bus.png" alt="BUS"></div>
+          <span class="icon-name">BUS</span>
+          <a href="images/transport icon/bus.png" download class="download-btn"><i class="fa-solid fa-download"></i></a>
+        </div>
+        <!-- CAR -->
+        <div class="icon-card" style="animation-delay: 0.08s">
+          <div class="img-container"><img src="images/transport icon/car.png" alt="CAR"></div>
+          <span class="icon-name">CAR</span>
+          <a href="images/transport icon/car.png" download class="download-btn"><i class="fa-solid fa-download"></i></a>
+        </div>
+        <!-- ELETRIC RICKSAW -->
+        <div class="icon-card" style="animation-delay: 0.09s">
+          <div class="img-container"><img src="images/transport icon/eletric ricksaw.png" alt="ELETRIC RICKSAW"></div>
+          <span class="icon-name">ELETRIC RICKSAW</span>
+          <a href="images/transport icon/eletric ricksaw.png" download class="download-btn"><i
+              class="fa-solid fa-download"></i></a>
+        </div>
+        <!-- RAILWAY SUPPORT -->
+        <div class="icon-card" style="animation-delay: 0.10s">
+          <div class="img-container"><img src="images/transport icon/railway support.png" alt="RAILWAY SUPPORT"></div>
+          <span class="icon-name">RAILWAY SUPPORT</span>
+          <a href="images/transport icon/railway support.png" download class="download-btn"><i
+              class="fa-solid fa-download"></i></a>
+        </div>
+        <!-- RECOVERY TRUCK -->
+        <div class="icon-card" style="animation-delay: 0.11s">
+          <div class="img-container"><img src="images/transport icon/recovery truck.png" alt="RECOVERY TRUCK"></div>
+          <span class="icon-name">RECOVERY TRUCK</span>
+          <a href="images/transport icon/recovery truck.png" download class="download-btn"><i
+              class="fa-solid fa-download"></i></a>
+        </div>
+        <!-- ROCKET -->
+        <div class="icon-card" style="animation-delay: 0.12s">
+          <div class="img-container"><img src="images/transport icon/rocket.png" alt="ROCKET"></div>
+          <span class="icon-name">ROCKET</span>
+          <a href="images/transport icon/rocket.png" download class="download-btn"><i
+              class="fa-solid fa-download"></i></a>
+        </div>
+        <!-- TRACTOR -->
+        <div class="icon-card" style="animation-delay: 0.13s">
+          <div class="img-container"><img src="images/transport icon/tractor.png" alt="TRACTOR"></div>
+          <span class="icon-name">TRACTOR</span>
+          <a href="images/transport icon/tractor.png" download class="download-btn"><i
+              class="fa-solid fa-download"></i></a>
+        </div>
+        <!-- TRAIN -->
+        <div class="icon-card" style="animation-delay: 0.14s">
+          <div class="img-container"><img src="images/transport icon/train.png" alt="TRAIN"></div>
+          <span class="icon-name">TRAIN</span>
+          <a href="images/transport icon/train.png" download class="download-btn"><i
+              class="fa-solid fa-download"></i></a>
+        </div>
+
+      </div>
+
+    </main>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Dark Mode Logic
+      const toggle = document.getElementById('darkModeToggle');
+      const icon = toggle.querySelector('i');
+      const body = document.body;
+
+      // Check saved preference
+      if (localStorage.getItem('iconscopeDarkMode') === 'true') {
+        body.classList.add('dark-mode');
+        icon.classList.remove('fa-moon');
+        icon.classList.add('fa-sun');
+      }
+
+      toggle.addEventListener('click', () => {
+        body.classList.toggle('dark-mode');
+        const isDark = body.classList.contains('dark-mode');
+        localStorage.setItem('iconscopeDarkMode', isDark);
+
+        if (isDark) {
+          icon.classList.remove('fa-moon');
+          icon.classList.add('fa-sun');
+        } else {
+          icon.classList.remove('fa-sun');
+          icon.classList.add('fa-moon');
+        }
+      });
+
+      // --- Notification System (Publisher-Subscriber) ---
+      const notificationBtn = document.getElementById('notificationBtn');
+      const bellIcon = notificationBtn.querySelector('i');
+      let isSubscribed = localStorage.getItem('iconscopeNotifications') === 'true';
+
+      // Update UI based on state
+      function updateNotificationUI() {
+        if (isSubscribed) {
+          bellIcon.classList.remove('fa-regular');
+          bellIcon.classList.add('fa-solid');
+          bellIcon.style.color = '#6366f1'; // Active color
+        } else {
+          bellIcon.classList.remove('fa-solid');
+          bellIcon.classList.add('fa-regular');
+          bellIcon.style.color = ''; // Reset to default
+        }
+      }
+
+      // Real-Time Listener (Storage Event)
+      window.addEventListener('storage', (event) => {
+        if (event.key === 'iconscope_latest_post') {
+          const post = JSON.parse(event.newValue);
+          if (isSubscribed && Notification.permission === 'granted') {
+            new Notification(post.title, {
+              body: post.body,
+              icon: "images/bg.png"
+            });
+          }
+        }
+      });
+
+      // Init
+      updateNotificationUI();
+
+      // Click Handler
+      notificationBtn.addEventListener('click', () => {
+        if (!("Notification" in window)) {
+          alert("This browser does not support desktop notification");
+          return;
+        }
+
+        if (Notification.permission === "granted") {
+          // Toggle Off
+          isSubscribed = !isSubscribed;
+          localStorage.setItem('iconscopeNotifications', isSubscribed);
+          updateNotificationUI();
+          if (!isSubscribed) {
+            alert("You have unsubscribed from updates.");
+          } else {
+            alert("You are now subscribed to real-time updates!");
+            new Notification("IconScope", {
+              body: "Welcome! You will now receive all future updates.",
+              icon: "images/bg.png"
+            });
+          }
+        } else if (Notification.permission !== "denied") {
+          // Request Permission
+          Notification.requestPermission().then((permission) => {
+            if (permission === "granted") {
+              isSubscribed = true;
+              localStorage.setItem('iconscopeNotifications', 'true');
+              updateNotificationUI();
+              new Notification("IconScope", {
+                body: "Notifications enabled! You will now receive updates.",
+                icon: "images/bg.png"
+              });
+            }
+          });
+        } else {
+          alert("Notifications are denied. Please enable them in your browser settings.");
+        }
+      });
+
+      // Menu Dropdown Logic
+      const menuBtn = document.getElementById('menuBtn');
+      const dropdownMenu = document.getElementById('dropdownMenu');
+
+      if (menuBtn && dropdownMenu) {
+        menuBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          dropdownMenu.classList.toggle('show');
+        });
+
+        // Close on click outside
+        document.addEventListener('click', (e) => {
+          if (!menuBtn.contains(e.target) && !dropdownMenu.contains(e.target)) {
+            dropdownMenu.classList.remove('show');
+          }
+        });
+      }
+
+      // --- Real-Time Search Logic ---
+      const searchInput = document.querySelector('.search-box input');
+      if (searchInput) {
+        searchInput.addEventListener('input', function () {
+          const searchTerm = this.value.toLowerCase().trim();
+          const iconCards = document.querySelectorAll('.icon-card');
+
+          iconCards.forEach(card => {
+            const nameElement = card.querySelector('.icon-name');
+            if (nameElement) {
+              const name = nameElement.textContent.toLowerCase();
+              if (name.includes(searchTerm)) {
+                card.style.display = 'flex';
+              } else {
+                card.style.display = 'none';
+              }
+            }
+          });
+        });
+      }
+    });
+  </script>
+</body>
+
+</html>

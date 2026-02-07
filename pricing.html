@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IconScope | Pricing Plans</title>
+
+    <!-- Google Fonts: Outfit (Modern, Geometric) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+    <style>
+        :root {
+            --primary: #4effbf;
+            --secondary: #6366f1;
+            --accent: #ec4899;
+            --dark: #0f172a;
+            --light: #f8fafc;
+            --glass-bg: rgba(255, 255, 255, 0.7);
+            --glass-border: rgba(255, 255, 255, 0.4);
+            --glow: 0 0 20px rgba(99, 102, 241, 0.3);
+            --font-main: 'Outfit', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: var(--font-main);
+        }
+
+        body {
+            background: linear-gradient(135deg, #f0f4ff 0%, #eef2ff 100%);
+            background-attachment: fixed;
+            color: var(--dark);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* --- Header --- */
+        .app-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 70px;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--glass-border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 5%;
+            z-index: 1000;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 800;
+            font-size: 24px;
+            color: #1e293b;
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+
+        .logo img {
+            width: 32px;
+            height: 32px;
+        }
+
+        .header-menu {
+            display: flex;
+            gap: 20px;
+        }
+
+        .header-menu a {
+            text-decoration: none;
+            color: #64748b;
+            font-weight: 500;
+            font-size: 15px;
+            transition: color 0.3s;
+        }
+
+        .header-menu a:hover {
+            color: var(--secondary);
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .icon-btn {
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #64748b;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .icon-btn:hover {
+            background: rgba(255, 255, 255, 0.25);
+            color: var(--secondary);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Main Content */
+        main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 120px 20px;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 6vw, 4.5rem);
+            line-height: 1.1;
+            font-weight: 800;
+            margin-bottom: 20px;
+            background: linear-gradient(300deg, #3b82f6, #8b5cf6, #ec4899);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientShift 6s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #64748b;
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+
+        .cta-btn {
+            background: var(--dark);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 99px;
+            font-weight: 600;
+            font-size: 16px;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: inline-block;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Footer */
+        footer {
+            background: white;
+            padding: 40px 20px;
+            text-align: center;
+            border-top: 1px solid #e2e8f0;
+            color: #94a3b8;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <nav class="app-header">
+        <a href="home page.html" class="logo">
+            <img src="images/bg.png" alt="IconScope Brand">
+            IconScope
+        </a>
+        <div class="header-menu">
+            <a href="all icons.html">Explore</a>
+            <a href="designers.html">Designers</a>
+            <a href="pricing.html" style="color: var(--secondary);">Pricing</a>
+        </div>
+        <div class="header-right">
+            <div class="icon-btn" id="notificationBtn"><i class="fa-regular fa-bell"></i></div>
+            <div class="icon-btn" id="darkModeToggle"><i class="fa-solid fa-moon"></i></div>
+            <div class="icon-btn"><i class="fa-solid fa-bars"></i></div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <section class="hero">
+            <h1>Flexible Pricing Plans</h1>
+            <p>Access unlimited icons and premium features. Our pricing plans will be revealed shortly.</p>
+            <p><strong>Coming Soon</strong></p>
+            <a href="home page.html" class="cta-btn">Go Back Home</a>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 IconScope. All rights reserved.</p>
+    </footer>
+
+</body>
+
+</html>
