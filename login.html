@@ -145,6 +145,15 @@
       color: var(--secondary);
     }
 
+    .input-group.error {
+      border-color: #ef4444;
+      background: rgba(239, 68, 68, 0.05);
+    }
+
+    .input-group.error i {
+      color: #ef4444;
+    }
+
     .input-group input {
       border: none;
       outline: none;
@@ -447,41 +456,42 @@
     const loginBtn = document.querySelector(".login-btn");
 
     loginBtn.addEventListener("click", () => {
-      const email = document.getElementById("loginEmail").value.trim();
-      const password = document.getElementById("loginPassword").value.trim();
+      const emailInput = document.getElementById("loginEmail");
+      const passwordInput = document.getElementById("loginPassword");
+      const email = emailInput.value.trim();
+      const password = passwordInput.value.trim();
       const error = document.getElementById("loginError");
 
+      // Reset errors
       error.textContent = "";
+      emailInput.parentElement.classList.remove("error");
+      passwordInput.parentElement.classList.remove("error");
+
+      let hasError = false;
+
+      if (!email) {
+        emailInput.parentElement.classList.add("error");
+        hasError = true;
+      }
+
+      if (!password) {
+        passwordInput.parentElement.classList.add("error");
+        hasError = true;
+      }
+
+      if (hasError) {
+        error.textContent = "Please fill in all fields.";
+        shakeBox();
+        return;
+      }
 
       const users = JSON.parse(localStorage.getItem("iconscopeUsers")) || [];
-
       const user = users.find(
         u => u.email === email && u.password === password
       );
 
       if (!user) {
-        // Shake animation on error
-        const box = document.querySelector('.login-box');
-        box.style.animation = 'none';
-        box.offsetHeight; /* trigger reflow */
-        box.style.animation = 'shake 0.5s';
-
-        // Add shake keyframes if not present
-        if (!document.getElementById('shake-style')) {
-          const style = document.createElement('style');
-          style.id = 'shake-style';
-          style.textContent = `
-             @keyframes shake {
-               0% { transform: translateX(0); }
-               25% { transform: translateX(-5px); }
-               50% { transform: translateX(5px); }
-               75% { transform: translateX(-5px); }
-               100% { transform: translateX(0); }
-             }
-           `;
-          document.head.appendChild(style);
-        }
-
+        shakeBox();
         error.textContent = "Invalid email or password";
         return;
       }
@@ -496,6 +506,38 @@
       setTimeout(() => {
         window.location.href = "home page.html";
       }, 800);
+    });
+
+    function shakeBox() {
+      const box = document.querySelector('.login-box');
+      box.style.animation = 'none';
+      box.offsetHeight; /* trigger reflow */
+      box.style.animation = 'shake 0.5s';
+
+      // Add shake keyframes if not present
+      if (!document.getElementById('shake-style')) {
+        const style = document.createElement('style');
+        style.id = 'shake-style';
+        style.textContent = `
+             @keyframes shake {
+               0% { transform: translateX(0); }
+               25% { transform: translateX(-5px); }
+               50% { transform: translateX(5px); }
+               75% { transform: translateX(-5px); }
+               100% { transform: translateX(0); }
+             }
+           `;
+        document.head.appendChild(style);
+      }
+    }
+
+    // Clear error on input
+    const inputs = document.querySelectorAll('input');
+    inputs.forEach(input => {
+      input.addEventListener('input', () => {
+        input.parentElement.classList.remove('error');
+        document.getElementById("loginError").textContent = "";
+      });
     });
 
     // Dark Mode Logic

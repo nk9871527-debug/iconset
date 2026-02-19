@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>IconScope – Send Message</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Google Font: Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+    <style>
+        :root {
+            --primary: #4effbf;
+            --secondary: #6366f1;
+            --accent: #ec4899;
+            --dark: #0f172a;
+            --glass-bg: rgba(255, 255, 255, 0.75);
+            --glass-border: rgba(255, 255, 255, 0.5);
+            --shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #f0f4ff 0%, #eef2ff 100%);
+            background-attachment: fixed;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        .page {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: inherit;
+        }
+
+        /* Logo */
+        .logo {
+            position: absolute;
+            top: 30px;
+            left: 40px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 800;
+            color: #1e293b;
+            font-size: 24px;
+            letter-spacing: -0.5px;
+            text-decoration: none;
+            z-index: 10;
+        }
+
+        .logo img {
+            width: 32px;
+            height: 32px;
+        }
+
+        /* Glass Card */
+        .card {
+            width: 500px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 40px 35px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            animation: fadeInUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            font-size: 30px;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 6px;
+        }
+
+        .subtitle {
+            color: #64748b;
+            margin-bottom: 28px;
+            font-size: 15px;
+        }
+
+        .input-group {
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 14px;
+            padding: 14px 16px;
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 14px;
+            border: 1px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .input-group:focus-within {
+            background: #fff;
+            border-color: var(--secondary);
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.15);
+            transform: translateY(-1px);
+        }
+
+        .input-group i {
+            color: #94a3b8;
+            margin-right: 12px;
+            font-size: 16px;
+            transition: color 0.3s;
+            margin-top: 4px;
+        }
+
+        .input-group:focus-within i {
+            color: var(--secondary);
+        }
+
+        .input-group.error {
+            border-color: #ef4444;
+            background: rgba(239, 68, 68, 0.05);
+        }
+
+        .input-group.error i {
+            color: #ef4444;
+        }
+
+        .input-group input,
+        .input-group textarea {
+            border: none;
+            outline: none;
+            background: transparent;
+            width: 100%;
+            font-size: 15px;
+            color: var(--dark);
+            font-weight: 500;
+            resize: none;
+        }
+
+        .input-group textarea {
+            min-height: 100px;
+            line-height: 1.5;
+        }
+
+        .input-group input::placeholder,
+        .input-group textarea::placeholder {
+            color: #cbd5e1;
+        }
+
+        .send-btn {
+            width: 100%;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            color: #fff;
+            border: none;
+            padding: 14px;
+            border-radius: 14px;
+            font-size: 16px;
+            font-weight: 600;
+            margin-top: 10px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 10px rgba(99, 102, 241, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .send-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(99, 102, 241, 0.4);
+        }
+
+        .back-link {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #64748b;
+        }
+
+        .back-link a {
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+
+        .back-link a:hover {
+            color: #4f46e5;
+            text-decoration: underline;
+        }
+
+        /* Dark Mode Styles */
+        .theme-toggle {
+            position: absolute;
+            top: 30px;
+            right: 40px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            border: 1px solid var(--glass-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--dark);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 20;
+        }
+
+        .theme-toggle:hover {
+            background: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        body.dark-mode {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        }
+
+        body.dark-mode .logo {
+            color: #f1f5f9;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 5px 10px;
+            border-radius: 8px;
+        }
+
+        body.dark-mode .card {
+            background: rgba(30, 41, 59, 0.7);
+            border-color: rgba(255, 255, 255, 0.1);
+            color: #f1f5f9;
+        }
+
+        body.dark-mode h1 {
+            color: #f1f5f9;
+        }
+
+        body.dark-mode .subtitle {
+            color: #cbd5e1;
+        }
+
+        body.dark-mode .input-group {
+            background: rgba(15, 23, 42, 0.6);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        body.dark-mode .input-group input,
+        body.dark-mode .input-group textarea {
+            color: #f1f5f9;
+        }
+
+        body.dark-mode .input-group i {
+            color: #94a3b8;
+        }
+
+        body.dark-mode .back-link {
+            color: #cbd5e1;
+        }
+
+        body.dark-mode .theme-toggle {
+            background: rgba(255, 255, 255, 0.1);
+            color: #f1f5f9;
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        body.dark-mode .theme-toggle:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Logo -->
+    <a href="home page.html" class="logo">
+        <img src="images/bg.png" alt="IconScope">
+        IconScope
+    </a>
+
+    <button class="theme-toggle" id="darkModeToggle">
+        <i class="fa-solid fa-moon"></i>
+    </button>
+
+    <div class="page">
+        <div class="card">
+            <h1>Send Message</h1>
+            <div class="subtitle">Fill out the form below and we'll get back to you soon.</div>
+
+            <div class="input-group">
+                <i class="fa-regular fa-user"></i>
+                <input id="name" type="text" placeholder="Your Name">
+            </div>
+
+            <div class="input-group">
+                <i class="fa-regular fa-envelope"></i>
+                <input id="email" type="email" placeholder="Your Email">
+            </div>
+
+            <div class="input-group">
+                <i class="fa-solid fa-tag"></i>
+                <input id="subject" type="text" placeholder="Subject">
+            </div>
+
+            <div class="input-group">
+                <i class="fa-regular fa-comment-dots"></i>
+                <textarea id="message" placeholder="Write your message here..."></textarea>
+            </div>
+
+            <button class="send-btn" id="sendBtn">Send Message <i class="fa-solid fa-paper-plane"></i></button>
+
+            <p id="errorMsg" style="color:#ef4444; font-size:13px; margin-top:15px; min-height:18px; font-weight:500;">
+            </p>
+
+            <div class="back-link">
+                Changed your mind?
+                <a href="contact.html">Back to Contact</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const sendBtn = document.getElementById("sendBtn");
+
+            // Auto-fill if user logged in
+            const userStr = localStorage.getItem('iconscopeUser');
+            if (userStr) {
+                const user = JSON.parse(userStr);
+                document.getElementById('name').value = user.name || '';
+                document.getElementById('email').value = user.email || '';
+            }
+
+            sendBtn.addEventListener("click", () => {
+                const nameInput = document.getElementById("name");
+                const emailInput = document.getElementById("email");
+                const subjectInput = document.getElementById("subject");
+                const messageInput = document.getElementById("message");
+                const errorMsg = document.getElementById("errorMsg");
+
+                const name = nameInput.value.trim();
+                const email = emailInput.value.trim();
+                const subject = subjectInput.value.trim();
+                const message = messageInput.value.trim();
+
+                // Reset
+                errorMsg.textContent = "";
+                document.querySelectorAll('.input-group').forEach(el => el.classList.remove("error"));
+
+                // Animation helper
+                const shake = () => {
+                    const card = document.querySelector('.card');
+                    card.style.animation = 'none';
+                    card.offsetHeight;
+                    card.style.animation = 'shake 0.5s';
+                };
+
+                if (!document.getElementById('shake-style')) {
+                    const style = document.createElement('style');
+                    style.id = 'shake-style';
+                    style.textContent = `
+                         @keyframes shake {
+                           0% { transform: translateX(0); }
+                           25% { transform: translateX(-5px); }
+                           50% { transform: translateX(5px); }
+                           75% { transform: translateX(-5px); }
+                           100% { transform: translateX(0); }
+                         }
+                       `;
+                    document.head.appendChild(style);
+                }
+
+                let hasError = false;
+
+                if (!name) {
+                    nameInput.parentElement.classList.add("error");
+                    hasError = true;
+                }
+                if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                    emailInput.parentElement.classList.add("error");
+                    hasError = true;
+                }
+                if (!subject) {
+                    subjectInput.parentElement.classList.add("error");
+                    hasError = true;
+                }
+                if (!message) {
+                    messageInput.parentElement.classList.add("error");
+                    hasError = true;
+                }
+
+                if (hasError) {
+                    errorMsg.textContent = "Please fill in all fields correctly.";
+                    shake();
+                    return;
+                }
+
+                // Construct Mailto Link
+                const subjectEncoded = encodeURIComponent(`[IconScope] ${subject}`);
+                const bodyEncoded = encodeURIComponent(`${message}\n\n---\nFrom: ${name} (${email})`);
+                const mailtoLink = `mailto:contact@iconscope.com?subject=${subjectEncoded}&body=${bodyEncoded}`;
+
+                // Update UI state
+                sendBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Preparing...';
+
+                setTimeout(() => {
+                    // Open default mail client
+                    window.location.href = mailtoLink;
+
+                    sendBtn.innerHTML = '<i class="fa-solid fa-check"></i> Opened Mail Client';
+                    sendBtn.style.background = '#10b981';
+
+                    // Reset after 3 seconds
+                    setTimeout(() => {
+                        sendBtn.innerHTML = 'Send Message <i class="fa-solid fa-paper-plane"></i>';
+                        sendBtn.style.background = '';
+                        // Optional: clear form
+                        // messageInput.value = '';
+                    }, 3000);
+                }, 1000);
+            });
+
+            // Clear error on input
+            const inputs = document.querySelectorAll('input, textarea');
+            inputs.forEach(input => {
+                input.addEventListener('input', () => {
+                    input.parentElement.classList.remove('error');
+                    document.getElementById("errorMsg").textContent = "";
+                });
+            });
+
+            // Dark Mode Logic
+            const toggle = document.getElementById('darkModeToggle');
+            const icon = toggle.querySelector('i');
+            const body = document.body;
+
+            // Check saved preference
+            if (localStorage.getItem('iconscopeDarkMode') === 'true') {
+                body.classList.add('dark-mode');
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            }
+
+            toggle.addEventListener('click', () => {
+                body.classList.toggle('dark-mode');
+                const isDark = body.classList.contains('dark-mode');
+                localStorage.setItem('iconscopeDarkMode', isDark);
+
+                if (isDark) {
+                    icon.classList.remove('fa-moon');
+                    icon.classList.add('fa-sun');
+                } else {
+                    icon.classList.remove('fa-sun');
+                    icon.classList.add('fa-moon');
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IconScope | Pricing Plans</title>
+    <title>IconScope | Privacy Policy</title>
 
     <!-- Google Fonts: Outfit (Modern, Geometric) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -69,10 +69,7 @@
             gap: 10px;
             font-weight: 800;
             font-size: 24px;
-            background: linear-gradient(to right, #6366f1, #a855f7);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: #1e293b;
             text-decoration: none;
             letter-spacing: -0.5px;
         }
@@ -119,6 +116,7 @@
             color: #64748b;
             cursor: pointer;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
         }
 
         .icon-btn:hover {
@@ -126,110 +124,6 @@
             color: var(--secondary);
             transform: translateY(-2px);
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        /* Dark Mode Styles */
-        body.dark-mode {
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-            color: #f1f5f9;
-        }
-
-        body.dark-mode .app-header,
-        body.dark-mode footer {
-            background: rgba(30, 41, 59, 0.7);
-            border-color: rgba(255, 255, 255, 0.08);
-            color: #f1f5f9;
-            backdrop-filter: blur(16px);
-        }
-
-        body.dark-mode .icon-btn {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            color: #94a3b8;
-        }
-
-        body.dark-mode .icon-btn:hover {
-            background: rgba(255, 255, 255, 0.08);
-            color: #fff;
-            border-color: rgba(255, 255, 255, 0.2);
-        }
-
-        body.dark-mode .cta-btn {
-            background: #3b82f6;
-            /* Lighter blue for dark mode visibility */
-            color: white;
-        }
-
-        /* Main Content */
-        main {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 120px 20px;
-        }
-
-        .hero h1 {
-            font-size: clamp(3rem, 6vw, 4.5rem);
-            line-height: 1.1;
-            font-weight: 800;
-            margin-bottom: 20px;
-            background: linear-gradient(300deg, #3b82f6, #8b5cf6, #ec4899);
-            background-size: 200% 200%;
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: gradientShift 6s ease infinite;
-        }
-
-        @keyframes gradientShift {
-            0% {
-                background-position: 0% 50%;
-            }
-
-            50% {
-                background-position: 100% 50%;
-            }
-
-            100% {
-                background-position: 0% 50%;
-            }
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            color: #64748b;
-            max-width: 600px;
-            margin: 0 auto 40px;
-        }
-
-        .cta-btn {
-            background: var(--dark);
-            color: white;
-            padding: 12px 24px;
-            border-radius: 99px;
-            font-weight: 600;
-            font-size: 16px;
-            text-decoration: none;
-            transition: transform 0.2s, box-shadow 0.2s;
-            display: inline-block;
-        }
-
-        .cta-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        /* Footer */
-        footer {
-            background: white;
-            padding: 40px 20px;
-            text-align: center;
-            border-top: 1px solid #e2e8f0;
-            color: #94a3b8;
-            font-size: 14px;
         }
 
         /* Dropdown Menu */
@@ -291,6 +185,111 @@
                 transform: scale(1);
             }
         }
+
+        /* --- Main Content --- */
+        main {
+            flex: 1;
+            padding: 120px 20px 60px;
+            max-width: 800px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        h1 {
+            font-size: 32px;
+            font-weight: 800;
+            color: #1e293b;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .content-box {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            line-height: 1.6;
+            color: #475569;
+        }
+
+        .content-box h3 {
+            color: #1e293b;
+            margin: 20px 0 10px;
+            font-size: 20px;
+        }
+
+        .content-box p {
+            margin-bottom: 15px;
+        }
+
+        /* --- Footer --- */
+        footer {
+            background: white;
+            padding: 40px 20px;
+            text-align: center;
+            border-top: 1px solid #e2e8f0;
+            color: #94a3b8;
+            font-size: 14px;
+        }
+
+        /* Dark Mode */
+        body.dark-mode {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: #f1f5f9;
+        }
+
+        body.dark-mode .app-header {
+            background: rgba(30, 41, 59, 0.7);
+            border-color: rgba(255, 255, 255, 0.08);
+            color: #f1f5f9;
+        }
+
+        body.dark-mode .logo {
+            color: #f1f5f9;
+        }
+
+        body.dark-mode .header-menu a {
+            color: #cbd5e1;
+        }
+
+        body.dark-mode .icon-btn {
+            background: rgba(255, 255, 255, 0.03);
+            border-color: rgba(255, 255, 255, 0.08);
+            color: #94a3b8;
+        }
+
+        body.dark-mode .dropdown-menu {
+            background: rgba(30, 41, 59, 0.9);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        body.dark-mode .dropdown-menu a {
+            color: #cbd5e1;
+        }
+
+        body.dark-mode .dropdown-menu a:hover {
+            background: rgba(255, 255, 255, 0.05);
+            color: white;
+        }
+
+        body.dark-mode h1 {
+            color: #f1f5f9;
+        }
+
+        body.dark-mode .content-box {
+            background: rgba(30, 41, 59, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            color: #cbd5e1;
+        }
+
+        body.dark-mode .content-box h3 {
+            color: white;
+        }
+
+        body.dark-mode footer {
+            background: rgba(30, 41, 59, 0.7);
+            border-color: rgba(255, 255, 255, 0.08);
+        }
     </style>
 </head>
 
@@ -305,7 +304,7 @@
         <div class="header-menu">
             <a href="home page.html">Explore</a>
             <a href="designers.html">Designers</a>
-            <a href="pricing.html" style="color: var(--secondary);">Pricing</a>
+            <a href="pricing.html">Pricing</a>
         </div>
         <div class="header-right">
             <div class="icon-btn" id="notificationBtn"><i class="fa-regular fa-bell"></i></div>
@@ -319,8 +318,7 @@
                     <a href="privacy.html"><i class="fa-solid fa-shield-halved"></i> Privacy</a>
                     <hr>
                     <a href="login.html" id="logoutBtn" style="color: #ef4444;"><i
-                            class="fa-solid fa-right-from-bracket"></i>
-                        Logout</a>
+                            class="fa-solid fa-right-from-bracket"></i> Logout</a>
                 </div>
             </div>
         </div>
@@ -328,15 +326,27 @@
 
     <!-- Main Content -->
     <main>
-        <section class="hero">
-            <h1>Flexible Pricing Plans</h1>
-            <p>Start using IconScope completely free for 1 month.<br>
-                Explore, download, and use all icons with no limits.<br>
-                After the free period, you can upgrade to a low-cost premium plan for uninterrupted access and future
-                premium features.
-            </p>
-            <a href="home page.html" class="cta-btn">Go Back Home</a>
-        </section>
+        <h1>Privacy Policy</h1>
+        <div class="content-box">
+            <p><strong>Last Updated: February 2026</strong></p>
+            <p>At IconScope, we take your privacy seriously. This Privacy Policy explains how we collect, use, and
+                protect your personal information.</p>
+
+            <h3>1. Information We Collect</h3>
+            <p>We collect information you provide directly to us, such as when you create an account, update your
+                profile, or contact customer support. This may include your name, email address, and password.</p>
+
+            <h3>2. How We Use Your Information</h3>
+            <p>We use your information to provide, maintain, and improve our services, including processing
+                transactions, sending you related information, and responding to your comments and questions.</p>
+
+            <h3>3. Data Security</h3>
+            <p>We implement appropriate technical and organizational measures to protect your personal data against
+                unauthorized alteration, disclosure, or access.</p>
+
+            <h3>4. Contact Us</h3>
+            <p>If you have any questions about this Privacy Policy, please contact us at support@iconscope.com.</p>
+        </div>
     </main>
 
     <!-- Footer -->
@@ -351,7 +361,6 @@
             const icon = toggle.querySelector('i');
             const body = document.body;
 
-            // Check saved preference
             if (localStorage.getItem('iconscopeDarkMode') === 'true') {
                 body.classList.add('dark-mode');
                 icon.classList.remove('fa-moon');
@@ -373,14 +382,6 @@
                     }
                 });
             }
-            // Logout Logic
-            const logoutBtn = document.getElementById('logoutBtn');
-            if (logoutBtn) {
-                logoutBtn.addEventListener('click', () => {
-                    localStorage.removeItem('iconscopeLoggedIn');
-                    localStorage.removeItem('iconscopeUser');
-                });
-            }
 
             // Menu Dropdown Logic
             const menuBtn = document.getElementById('menuBtn');
@@ -392,16 +393,23 @@
                     dropdownMenu.classList.toggle('show');
                 });
 
-                // Close on click outside
                 document.addEventListener('click', (e) => {
                     if (!menuBtn.contains(e.target) && !dropdownMenu.contains(e.target)) {
                         dropdownMenu.classList.remove('show');
                     }
                 });
             }
+
+            // Logout Logic
+            const logoutBtn = document.getElementById('logoutBtn');
+            if (logoutBtn) {
+                logoutBtn.addEventListener('click', () => {
+                    localStorage.removeItem('iconscopeLoggedIn');
+                    localStorage.removeItem('iconscopeUser');
+                });
+            }
         });
     </script>
-
 </body>
 
 </html>

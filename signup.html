@@ -142,6 +142,15 @@
       color: var(--secondary);
     }
 
+    .input-group.error {
+      border-color: #ef4444;
+      background: rgba(239, 68, 68, 0.05);
+    }
+
+    .input-group.error i {
+      color: #ef4444;
+    }
+
     .input-group input {
       border: none;
       outline: none;
@@ -480,16 +489,24 @@
     const signupBtn = document.querySelector(".signup-btn");
 
     signupBtn.addEventListener("click", () => {
-      const name = document.getElementById("name").value.trim();
-      const email = document.getElementById("email").value.trim();
-      const password = document.getElementById("password").value.trim();
+      const nameInput = document.getElementById("name");
+      const emailInput = document.getElementById("email");
+      const passwordInput = document.getElementById("password");
+
+      const name = nameInput.value.trim();
+      const email = emailInput.value.trim();
+      const password = passwordInput.value.trim();
       const errorMsg = document.getElementById("errorMsg");
 
+      // Reset
       errorMsg.textContent = "";
+      nameInput.parentElement.classList.remove("error");
+      emailInput.parentElement.classList.remove("error");
+      passwordInput.parentElement.classList.remove("error");
 
-      // Quick Animation Reset
-      const card = document.querySelector('.card');
+      // Animation helper
       const shake = () => {
+        const card = document.querySelector('.card');
         card.style.animation = 'none';
         card.offsetHeight;
         card.style.animation = 'shake 0.5s';
@@ -510,20 +527,37 @@
         document.head.appendChild(style);
       }
 
+      let hasError = false;
+
       if (name === "") {
         errorMsg.textContent = "Full name is required";
-        shake();
-        return;
+        nameInput.parentElement.classList.add("error");
+        hasError = true;
+      } else if (name.length < 2) {
+        errorMsg.textContent = "Name must be at least 2 characters";
+        nameInput.parentElement.classList.add("error");
+        hasError = true;
       }
 
-      if (!email.includes("@")) {
-        errorMsg.textContent = "Enter a valid email address";
-        shake();
-        return;
+      if (!hasError) {
+        // Email Regex
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+          errorMsg.textContent = "Enter a valid email address";
+          emailInput.parentElement.classList.add("error");
+          hasError = true;
+        }
       }
 
-      if (password.length < 6) {
-        errorMsg.textContent = "Password must be at least 6 characters";
+      if (!hasError) {
+        if (password.length < 6) {
+          errorMsg.textContent = "Password must be at least 6 characters";
+          passwordInput.parentElement.classList.add("error");
+          hasError = true;
+        }
+      }
+
+      if (hasError) {
         shake();
         return;
       }
@@ -533,6 +567,7 @@
       const existingUser = users.find(user => user.email === email);
       if (existingUser) {
         errorMsg.textContent = "Email already registered";
+        emailInput.parentElement.classList.add("error");
         shake();
         return;
       }
@@ -548,6 +583,15 @@
         alert("Account created successfully!");
         window.location.href = "login.html";
       }, 500);
+    });
+
+    // Clear error on input
+    const inputs = document.querySelectorAll('input');
+    inputs.forEach(input => {
+      input.addEventListener('input', () => {
+        input.parentElement.classList.remove('error');
+        document.getElementById("errorMsg").textContent = "";
+      });
     });
 
     // Dark Mode Logic

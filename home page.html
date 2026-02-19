@@ -111,7 +111,10 @@
             gap: 10px;
             font-weight: 800;
             font-size: 24px;
-            color: #1e293b;
+            background: linear-gradient(to right, #6366f1, #a855f7);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
             text-decoration: none;
             letter-spacing: -0.5px;
         }
@@ -239,6 +242,17 @@
             border-color: rgba(99, 102, 241, 0.5);
             background: rgba(99, 102, 241, 0.15);
             box-shadow: 0 0 20px rgba(99, 102, 241, 0.25);
+        }
+
+        body.dark-mode .folder-card h3 {
+            color: #f1f5f9;
+        }
+
+        body.dark-mode .logo {
+            background: linear-gradient(to right, #6366f1, #a855f7);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         /* Free Section Styles */
@@ -495,14 +509,14 @@
             font-size: 2rem;
             font-weight: 700;
             margin-bottom: 50px;
-            color: #1e293b;
+            color: white;
         }
 
         .grid-container {
             max-width: 1200px;
             margin: 0 auto 100px;
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 30px;
             padding: 0 20px;
         }
@@ -582,14 +596,18 @@
             color: #0f172a;
         }
 
-        .footer-col p {
+        .footer-col p,
+        .footer-col a {
             color: #64748b;
             margin-bottom: 12px;
             cursor: pointer;
             transition: color 0.2s;
+            text-decoration: none;
+            display: block;
         }
 
-        .footer-col p:hover {
+        .footer-col p:hover,
+        .footer-col a:hover {
             color: var(--secondary);
         }
 
@@ -695,7 +713,7 @@
             IconScope
         </a>
         <div class="header-menu">
-            <a href="all icons.html">Explore</a>
+            <a href="home page.html">Explore</a>
             <a href="designers.html">Designers</a>
             <a href="pricing.html">Pricing</a>
         </div>
@@ -705,11 +723,13 @@
             <div class="icon-btn" id="menuBtn" style="position: relative;">
                 <i class="fa-solid fa-bars"></i>
                 <div class="dropdown-menu" id="dropdownMenu">
-                    <a href="#"><i class="fa-regular fa-user"></i> Profile</a>
-                    <a href="#"><i class="fa-solid fa-gear"></i> Settings</a>
-                    <a href="#"><i class="fa-solid fa-shield-halved"></i> Privacy</a>
+                    <a href="profile.html"><i class="fa-regular fa-user"></i> Profile</a>
+                    <a href="settings.html"><i class="fa-solid fa-gear"></i> Settings</a>
+                    <a href="contact.html"><i class="fa-solid fa-envelope"></i> Contact</a>
+                    <a href="privacy.html"><i class="fa-solid fa-shield-halved"></i> Privacy</a>
                     <hr>
-                    <a href="login.html" style="color: #ef4444;"><i class="fa-solid fa-right-from-bracket"></i>
+                    <a href="login.html" id="logoutBtn" style="color: #ef4444;"><i
+                            class="fa-solid fa-right-from-bracket"></i>
                         Logout</a>
                 </div>
             </div>
@@ -863,17 +883,18 @@
             </div>
             <div class="footer-col">
                 <h4>Categories</h4>
-                <p>3D Icons</p>
-                <p>Illustrations</p>
-                <p>Stickers</p>
-                <p>Backgrounds</p>
+                <a href="all icons.html">All icons</a>
+                <a href="website icons.html">Website icons</a>
+                <a href="mobile app icons.html">Mobile icons</a>
+                <a href="navigation icons.html">Navigation icons</a>
+                <a href="3d icons.html">3d icons</a>
+
             </div>
             <div class="footer-col">
                 <h4>Company</h4>
-                <p>About Us</p>
-                <p>Licensing</p>
-                <p>Pricing</p>
-                <p>Contact</p>
+                <a href="#">About Us</a>
+                <a href="pricing.html">Pricing</a>
+                <a href="#">Contact</a>
             </div>
             <div class="footer-col">
                 <h4>Resources</h4>

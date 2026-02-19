@@ -274,8 +274,11 @@
 
     .page-title h1 {
       font-size: 28px;
-      font-weight: 700;
-      color: var(--text-main);
+      font-weight: 800;
+      background: linear-gradient(to right, white, white);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
     .page-title span {
@@ -559,11 +562,13 @@
       <div class="icon-btn" id="menuBtn" style="position: relative;">
         <i class="fa-solid fa-bars"></i>
         <div class="dropdown-menu" id="dropdownMenu">
-          <a href="#"><i class="fa-regular fa-user"></i> Profile</a>
-          <a href="#"><i class="fa-solid fa-gear"></i> Settings</a>
-          <a href="#"><i class="fa-solid fa-shield-halved"></i> Privacy</a>
+          <a href="profile.html"><i class="fa-regular fa-user"></i> Profile</a>
+          <a href="settings.html"><i class="fa-solid fa-gear"></i> Settings</a>
+          <a href="contact.html"><i class="fa-solid fa-envelope"></i> Contact</a>
+          <a href="privacy.html"><i class="fa-solid fa-shield-halved"></i> Privacy</a>
           <hr>
-          <a href="login.html" style="color: #ef4444;"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+          <a href="login.html" id="logoutBtn" style="color: #ef4444;"><i class="fa-solid fa-right-from-bracket"></i>
+            Logout</a>
         </div>
       </div>
     </div>
@@ -636,11 +641,6 @@
             <i class="fa-solid fa-search" style="color:#9ca3af"></i>
             <input type="text" placeholder="Search icons...">
           </div>
-          <select class="filter-select">
-            <option>Latest</option>
-            <option>Popular</option>
-            <option>A-Z</option>
-          </select>
         </div>
       </div>
 
@@ -915,6 +915,15 @@
           if (!menuBtn.contains(e.target) && !dropdownMenu.contains(e.target)) {
             dropdownMenu.classList.remove('show');
           }
+        });
+      }
+
+      // Logout Logic
+      const logoutBtn = document.getElementById('logoutBtn');
+      if (logoutBtn) {
+        logoutBtn.addEventListener('click', () => {
+          localStorage.removeItem('iconscopeLoggedIn');
+          localStorage.removeItem('iconscopeUser');
         });
       }
 

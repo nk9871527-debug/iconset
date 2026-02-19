@@ -87,7 +87,7 @@
             gap: 12px;
             font-weight: 700;
             font-size: 22px;
-            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            background: linear-gradient(to right, #6366f1, #a855f7);
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -140,10 +140,16 @@
             color: #f1f5f9;
         }
 
-        body.dark-mode .logo,
+        body.dark-mode .logo {
+            background: linear-gradient(to right, #6366f1, #a855f7);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
         body.dark-mode .page-title h1,
         body.dark-mode .menu li a {
-            color: #f1f5f9;
+            color: #f1f5f9 !important;
         }
 
         body.dark-mode .menu li a:hover {
@@ -166,7 +172,7 @@
         }
 
         body.dark-mode .icon-card {
-            background: rgba(30, 41, 59, 0.6);
+            background: #ffffff;
             border-color: rgba(255, 255, 255, 0.1);
         }
 
@@ -176,7 +182,7 @@
         }
 
         body.dark-mode .icon-name {
-            color: #e2e8f0;
+            color: #1f2937;
         }
 
         body.dark-mode .section-title {
@@ -192,6 +198,15 @@
         body.dark-mode .icon-btn:hover {
             background: rgba(255, 255, 255, 0.1);
             color: var(--primary-color);
+        }
+
+        /* Dark Mode Icon Inversion - Disabled to keep icons black */
+        body.dark-mode .icon-card img {
+            filter: none;
+        }
+
+        .icon-card img {
+            transition: transform 0.3s, filter 0.3s;
         }
 
         /* LAYOUT */
@@ -250,6 +265,9 @@
             color: var(--primary-color);
             border: 1px solid rgba(99, 102, 241, 0.2);
         }
+
+
+
 
         .menu li i {
             width: 20px;
@@ -334,7 +352,7 @@
         }
 
         .icon-card {
-            background: var(--glass-bg);
+            background: #ffffff;
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
             border: 1px solid var(--glass-border);
@@ -554,11 +572,13 @@
             <div class="icon-btn" id="menuBtn" style="position: relative;">
                 <i class="fa-solid fa-bars"></i>
                 <div class="dropdown-menu" id="dropdownMenu">
-                    <a href="#"><i class="fa-regular fa-user"></i> Profile</a>
-                    <a href="#"><i class="fa-solid fa-gear"></i> Settings</a>
-                    <a href="#"><i class="fa-solid fa-shield-halved"></i> Privacy</a>
+                    <a href="profile.html"><i class="fa-regular fa-user"></i> Profile</a>
+                    <a href="settings.html"><i class="fa-solid fa-gear"></i> Settings</a>
+                    <a href="contact.html"><i class="fa-solid fa-envelope"></i> Contact</a>
+                    <a href="privacy.html"><i class="fa-solid fa-shield-halved"></i> Privacy</a>
                     <hr>
-                    <a href="login.html" style="color: #ef4444;"><i class="fa-solid fa-right-from-bracket"></i>
+                    <a href="login.html" id="logoutBtn" style="color: #ef4444;"><i
+                            class="fa-solid fa-right-from-bracket"></i>
                         Logout</a>
                 </div>
             </div>
@@ -571,49 +591,57 @@
         <aside class="sidebar">
             <ul class="menu">
                 <li>
-                    <a href="home page.html"><i class="fa-solid fa-folder"></i> Dashboard</a>
+                    <a href="home page.html" class="item-dashboard"><i class="fa-solid fa-folder"></i> Dashboard</a>
                 </li>
                 <li class="active">
-                    <a href="all icons.html"><i class="fa-solid fa-cloud"></i> All</a>
+                    <a href="all icons.html" class="item-all"><i class="fa-solid fa-cloud"></i> All</a>
                 </li>
 
                 <div class="section-title">Pages</div>
 
                 <li>
-                    <a href="website icons.html"><i class="fa-regular fa-file"></i> Website Icons</a>
+                    <a href="website icons.html" class="item-website"><i class="fa-regular fa-file"></i> Website
+                        Icons</a>
                 </li>
                 <li>
-                    <a href="mobile app icons.html"><i class="fa-solid fa-mobile-screen"></i> Mobile App Icons</a>
+                    <a href="mobile app icons.html" class="item-mobile"><i class="fa-solid fa-mobile-screen"></i> Mobile
+                        App Icons</a>
                 </li>
                 <li>
-                    <a href="navigation icons.html"><i class="fa-solid fa-compass"></i> Navigation Icons</a>
+                    <a href="navigation icons.html" class="item-nav"><i class="fa-solid fa-compass"></i> Navigation
+                        Icons</a>
                 </li>
                 <li>
-                    <a href="3d icons.html"><i class="fa-solid fa-cube"></i> 3D Icons</a>
+                    <a href="3d icons.html" class="item-3d"><i class="fa-solid fa-cube"></i> 3D Icons</a>
                 </li>
                 <li>
-                    <a href="transport.html"><i class="fa-solid fa-car"></i> Transport Icons</a>
+                    <a href="transport.html" class="item-transport"><i class="fa-solid fa-car"></i> Transport Icons</a>
                 </li>
                 <li>
-                    <a href="home living icons.html"><i class="fa-solid fa-house"></i> Home Living Icons</a>
+                    <a href="home living icons.html" class="item-home"><i class="fa-solid fa-house"></i> Home Living
+                        Icons</a>
                 </li>
                 <li>
-                    <a href="brands.html"><i class="fa-solid fa-tag"></i> Brands Icons</a>
+                    <a href="brands.html" class="item-brands"><i class="fa-solid fa-tag"></i> Brands Icons</a>
                 </li>
                 <li>
-                    <a href="computer and hardware.html"><i class="fa-solid fa-desktop"></i> Computer & Hardw.</a>
+                    <a href="computer and hardware.html" class="item-comp"><i class="fa-solid fa-desktop"></i> Computer
+                        & Hardw.</a>
                 </li>
                 <li>
-                    <a href="education.html"><i class="fa-solid fa-graduation-cap"></i> Education Icons</a>
+                    <a href="education.html" class="item-edu"><i class="fa-solid fa-graduation-cap"></i> Education
+                        Icons</a>
                 </li>
                 <li>
-                    <a href="sports.html"><i class="fa-solid fa-basketball"></i> Sports Icons</a>
+                    <a href="sports.html" class="item-sports"><i class="fa-solid fa-basketball"></i> Sports Icons</a>
                 </li>
                 <li>
-                    <a href="payment.html"><i class="fa-solid fa-credit-card"></i> Payment Icons</a>
+                    <a href="payment.html" class="item-payment"><i class="fa-solid fa-credit-card"></i> Payment
+                        Icons</a>
                 </li>
                 <li>
-                    <a href="premium icons.html"><i class="fa-solid fa-crown"></i> Premium Icons</a>
+                    <a href="premium icons.html" class="item-premium"><i class="fa-solid fa-crown"></i> Premium
+                        Icons</a>
                 </li>
             </ul>
         </aside>
@@ -637,287 +665,8 @@
             </div>
 
             <!-- ICONS GRID -->
-            <div class="grid">
-                <!-- Icon: account.png -->
-                <div class="icon-card" style="animation-delay: 0.05s">
-                    <div class="img-container"><img src="images/all icon/account.png" alt="ACCOUNT"></div>
-                    <span class="icon-name">ACCOUNT</span>
-                    <a href="images/all icon/account.png" download class="download-btn"><i
-                            class="fa-solid fa-download"></i></a>
-                </div>
-                <!-- Icon: achivement.png -->
-                <div class="icon-card" style="animation-delay: 0.06s">
-                    <div class="img-container"><img src="images/all icon/achivement.png" alt="ACHIVEMENT"></div>
-                    <span class="icon-name">ACHIVEMENT</span>
-                    <a href="images/all icon/achivement.png" download class="download-btn"><i
-                            class="fa-solid fa-download"></i></a>
-                </div>
-                <!-- Icon: browser.png -->
-                <div class="icon-card" style="animation-delay: 0.07s">
-                    <div class="img-container"><img src="images/all icon/browser.png" alt="BROWSER"></div>
-                    <span class="icon-name">BROWSER</span>
-                    <a href="images/all icon/browser.png" download class="download-btn"><i
-                            class="fa-solid fa-download"></i></a>
-                </div>
-                <!-- Icon: calender.png -->
-                <div class="icon-card" style="animation-delay: 0.08s">
-                    <div class="img-container"><img src="images/all icon/calender.png" alt="CALENDER"></div>
-                    <span class="icon-name">CALENDER</span>
-                    <a href="images/all icon/calender.png" download class="download-btn"><i
-                            class="fa-solid fa-download"></i></a>
-                </div>
-                <!-- Icon: clock.png -->
-                <div class="icon-card" style="animation-delay: 0.09s">
-                    <div class="img-container"><img src="images/all icon/clock.png" alt="CLOCK"></div>
-                    <span class="icon-name">CLOCK</span>
-                    <a href="images/all icon/clock.png" download class="download-btn"><i
-                            class="fa-solid fa-download"></i></a>
-                </div>
-                <!-- Icon: document.png -->
-                <div class="icon-card" style="animation-delay: 0.10s">
-                    <div class="img-container"><img src="images/all icon/document.png" alt="DOCUMENT"></div>
-                    <span class="icon-name">DOCUMENT</span>
-                    <a href="images/all icon/document.png" download class="download-btn"><i
-                            class="fa-solid fa-download"></i></a>
-                </div>
-                <!-- Icon: download.png -->
-                <div class="icon-card" style="animation-delay: 0.11s">
-                    <div class="img-container"><img src="images/all icon/download.png" alt="DOWNLOAD"></div>
-                    <span class="icon-name">DOWNLOAD</span>
-                    <a href="images/all icon/download.png" download class="download-btn"><i
-                            class="fa-solid fa-download"></i></a>
-                </div>
-                <!-- Icon: edit.png -->
-                <div class="icon-card" style="animation-delay: 0.12s">
-                    <div class="img-container"><img src="images/all icon/edit.png" alt="EDIT"></div>
-                    <span class="icon-name">EDIT</span>
-                    <a href="images/all icon/edit.png" download class="download-btn"><i
-                            class="fa-solid fa-download"></i></a>
-                </div>
-                <!-- Icon: favourite.png -->
-                <div class="icon-card" style="animation-delay: 0.13s">
-                    <div class="img-container"><img src="images/all icon/favourite.png" alt="FAVOURITE"></div>
-                    <span class="icon-name">FAVOURITE</span>
-                    <a href="images/all icon/favourite.png" download class="download-btn"><i
-                            class="fa-solid fa-download"></i></a>
-                </div>
-                <!-- Icon: file.png -->
-                <div class="icon-card" style="animation-delay: 0.14s">
-                    <div class="img-container"><img src="images/all icon/file.png" alt="FILE"></div>
-                    <span class="icon-name">FILE</span>
-                    <a href="images/all icon/file.png" download class="download-btn"><i
-                            class="fa-solid fa-download"></i></a>
-                </div>
-                <!-- Icon: game.png -->
-                <div class="icon-card" style="animation-delay: 0.15s">
-                    <div class="img-container"><img src="images/all icon/game.png" alt="GAME"></div>
-                    <span class="icon-name">GAME</span>
-                    <a href="images/all icon/game.png" download class="download-btn"><i
-                            class="fa-solid fa-download"></i></a>
-                </div>
-                <!-- Icon: headset.png -->
-                <div class="icon-card" style="animation-delay: 0.16s">
-                    <div class="img-container"><img src="images/all icon/headset.png" alt="HEADSET"></div>
-                    <span class="icon-name">HEADSET</span>
-                    <a href="images/all icon/headset.png" download class="download-btn"><i
-                            class="fa-solid fa-download"></i></a>
-                </div>
-                <!-- Icon: health.png -->
-                <div class="icon-card" style="animation-delay: 0.17s">
-                    <div class="img-container"><img src="images/all icon/health.png" alt="HEALTH"></div>
-                    <span class="icon-name">HEALTH</span>
-                    <a href="images/all icon/health.png" download class="download-btn"><i
-                            class="fa-solid fa-download"></i></a>
-                </div>
-                <!-- Icon: help.png -->
-                <div class="icon-card" style="animation-delay: 0.18s">
-                    <div class="img-container"><img src="images/all icon/help.png" alt="HELP"></div>
-                    <span class="icon-name">HELP</span>
-                    <a href="images/all icon/help.png" download class="download-btn"><i
-                            class="fa-solid fa-download"></i></a>
-                </div>
-                <!-- Icon: home.png -->
-                <div class="icon-card" style="animation-delay: 0.19s">
-                    <div class="img-container"><img src="images/all icon/home.png" alt="HOME"></div>
-                    <span class="icon-name">HOME</span>
-                    <a href="images/all icon/home.png" download class="download-btn"><i
-                            class="fa-solid fa-download"></i></a>
-                </div>
-                <!-- Icon: like.png -->
-                <div class="icon-card" style="animation-delay: 0.20s">
-                    <div class="img-container"><img src="images/all icon/like.png" alt="LIKE"></div>
-                    <span class="icon-name">LIKE</span>
-                    <a href="images/all icon/like.png" download class="download-btn"><i
-                            class="fa-solid fa-download"></i></a>
-                </div>
-                <!-- Icon: lock.png -->
-                <div class="icon-card" style="animation-delay: 0.21s">
-                    <div class="img-container"><img src="images/all icon/lock.png" alt="LOCK"></div>
-                    <span class="icon-name">LOCK</span>
-                    <a href="images/all icon/lock.png" download class="download-btn"><i
-                            class="fa-solid fa-download"></i></a>
-                </div>
-                <!-- Icon: logout.png -->
-                <div class="icon-card" style="animation-delay: 0.22s">
-                    <div class="img-container"><img src="images/all icon/logout.png" alt="LOGOUT"></div>
-                    <span class="icon-name">LOGOUT</span>
-                    <a href="images/all icon/logout.png" download class="download-btn"><i
-                            class="fa-solid fa-download"></i></a>
-                </div>
-                <!-- Icon: mail.png -->
-                <div class="icon-card" style="animation-delay: 0.23s">
-                    <div class="img-container"><img src="images/all icon/mail.png" alt="MAIL"></div>
-                    <span class="icon-name">MAIL</span>
-                    <a href="images/all icon/mail.png" download class="download-btn"><i
-                            class="fa-solid fa-download"></i></a>
-                </div>
-                <!-- Icon: menu.png -->
-                <div class="icon-card" style="animation-delay: 0.24s">
-                    <div class="img-container"><img src="images/all icon/menu.png" alt="MENU"></div>
-                    <span class="icon-name">MENU</span>
-                    <a href="images/all icon/menu.png" download class="download-btn"><i
-                            class="fa-solid fa-download"></i></a>
-                </div>
-                <!-- Icon: message.png -->
-                <div class="icon-card" style="animation-delay: 0.25s">
-                    <div class="img-container"><img src="images/all icon/message.png" alt="MESSAGE"></div>
-                    <span class="icon-name">MESSAGE</span>
-                    <a href="images/all icon/message.png" download class="download-btn"><i
-                            class="fa-solid fa-download"></i></a>
-                </div>
-                <!-- Icon: notification.png -->
-                <div class="icon-card" style="animation-delay: 0.26s">
-                    <div class="img-container"><img src="images/all icon/notification.png" alt="NOTIFICATION"></div>
-                    <span class="icon-name">NOTIFICATION</span>
-                    <a href="images/all icon/notification.png" download class="download-btn"><i
-                            class="fa-solid fa-download"></i></a>
-                </div>
-                <!-- Icon: reward.png -->
-                <div class="icon-card" style="animation-delay: 0.27s">
-                    <div class="img-container"><img src="images/all icon/reward.png" alt="REWARD"></div>
-                    <span class="icon-name">REWARD</span>
-                    <a href="images/all icon/reward.png" download class="download-btn"><i
-                            class="fa-solid fa-download"></i></a>
-                </div>
-                <!-- Icon: running.png -->
-                <div class="icon-card" style="animation-delay: 0.28s">
-                    <div class="img-container"><img src="images/all icon/running.png" alt="RUNNING"></div>
-                    <span class="icon-name">RUNNING</span>
-                    <a href="images/all icon/running.png" download class="download-btn"><i
-                            class="fa-solid fa-download"></i></a>
-                </div>
-                <!-- Icon: scroll down.png -->
-                <div class="icon-card" style="animation-delay: 0.29s">
-                    <div class="img-container"><img src="images/all icon/scroll down.png" alt="SCROLL DOWN"></div>
-                    <span class="icon-name">SCROLL DOWN</span>
-                    <a href="images/all icon/scroll down.png" download class="download-btn"><i
-                            class="fa-solid fa-download"></i></a>
-                </div>
-                <!-- Icon: scroll up.png -->
-                <div class="icon-card" style="animation-delay: 0.30s">
-                    <div class="img-container"><img src="images/all icon/scroll up.png" alt="SCROLL UP"></div>
-                    <span class="icon-name">SCROLL UP</span>
-                    <a href="images/all icon/scroll up.png" download class="download-btn"><i
-                            class="fa-solid fa-download"></i></a>
-                </div>
-                <!-- Icon: search.png -->
-                <div class="icon-card" style="animation-delay: 0.31s">
-                    <div class="img-container"><img src="images/all icon/search.png" alt="SEARCH"></div>
-                    <span class="icon-name">SEARCH</span>
-                    <a href="images/all icon/search.png" download class="download-btn"><i
-                            class="fa-solid fa-download"></i></a>
-                </div>
-                <!-- Icon: security.png -->
-                <div class="icon-card" style="animation-delay: 0.32s">
-                    <div class="img-container"><img src="images/all icon/security.png" alt="SECURITY"></div>
-                    <span class="icon-name">SECURITY</span>
-                    <a href="images/all icon/security.png" download class="download-btn"><i
-                            class="fa-solid fa-download"></i></a>
-                </div>
-                <!-- Icon: setting.png -->
-                <div class="icon-card" style="animation-delay: 0.33s">
-                    <div class="img-container"><img src="images/all icon/setting.png" alt="SETTING"></div>
-                    <span class="icon-name">SETTING</span>
-                    <a href="images/all icon/setting.png" download class="download-btn"><i
-                            class="fa-solid fa-download"></i></a>
-                </div>
-                <!-- Icon: settings.png -->
-                <div class="icon-card" style="animation-delay: 0.34s">
-                    <div class="img-container"><img src="images/all icon/settings.png" alt="SETTINGS"></div>
-                    <span class="icon-name">SETTINGS</span>
-                    <a href="images/all icon/settings.png" download class="download-btn"><i
-                            class="fa-solid fa-download"></i></a>
-                </div>
-                <!-- Icon: shopping.png -->
-                <div class="icon-card" style="animation-delay: 0.35s">
-                    <div class="img-container"><img src="images/all icon/shopping.png" alt="SHOPPING"></div>
-                    <span class="icon-name">SHOPPING</span>
-                    <a href="images/all icon/shopping.png" download class="download-btn"><i
-                            class="fa-solid fa-download"></i></a>
-                </div>
-                <!-- Icon: sprint.png -->
-                <div class="icon-card" style="animation-delay: 0.36s">
-                    <div class="img-container"><img src="images/all icon/sprint.png" alt="SPRINT"></div>
-                    <span class="icon-name">SPRINT</span>
-                    <a href="images/all icon/sprint.png" download class="download-btn"><i
-                            class="fa-solid fa-download"></i></a>
-                </div>
-                <!-- Icon: sprots ball.png -->
-                <div class="icon-card" style="animation-delay: 0.37s">
-                    <div class="img-container"><img src="images/all icon/sprots ball.png" alt="SPROTS BALL"></div>
-                    <span class="icon-name">SPROTS BALL</span>
-                    <a href="images/all icon/sprots ball.png" download class="download-btn"><i
-                            class="fa-solid fa-download"></i></a>
-                </div>
-                <!-- Icon: star winner.png -->
-                <div class="icon-card" style="animation-delay: 0.38s">
-                    <div class="img-container"><img src="images/all icon/star winner.png" alt="STAR WINNER"></div>
-                    <span class="icon-name">STAR WINNER</span>
-                    <a href="images/all icon/star winner.png" download class="download-btn"><i
-                            class="fa-solid fa-download"></i></a>
-                </div>
-                <!-- Icon: star.png -->
-                <div class="icon-card" style="animation-delay: 0.39s">
-                    <div class="img-container"><img src="images/all icon/star.png" alt="STAR"></div>
-                    <span class="icon-name">STAR</span>
-                    <a href="images/all icon/star.png" download class="download-btn"><i
-                            class="fa-solid fa-download"></i></a>
-                </div>
-                <!-- Icon: tools.png -->
-                <div class="icon-card" style="animation-delay: 0.40s">
-                    <div class="img-container"><img src="images/all icon/tools.png" alt="TOOLS"></div>
-                    <span class="icon-name">TOOLS</span>
-                    <a href="images/all icon/tools.png" download class="download-btn"><i
-                            class="fa-solid fa-download"></i></a>
-                </div>
-                <!-- Icon: upload.png -->
-                <div class="icon-card" style="animation-delay: 0.41s">
-                    <div class="img-container"><img src="images/all icon/upload.png" alt="UPLOAD"></div>
-                    <span class="icon-name">UPLOAD</span>
-                    <a href="images/all icon/upload.png" download class="download-btn"><i
-                            class="fa-solid fa-download"></i></a>
-                </div>
-                <!-- Icon: video.png -->
-                <div class="icon-card" style="animation-delay: 0.42s">
-                    <div class="img-container"><img src="images/all icon/video.png" alt="VIDEO"></div>
-                    <span class="icon-name">VIDEO</span>
-                    <a href="images/all icon/video.png" download class="download-btn"><i
-                            class="fa-solid fa-download"></i></a>
-                </div>
-                <!-- Icon: weather.png -->
-                <div class="icon-card" style="animation-delay: 0.43s">
-                    <div class="img-container"><img src="images/all icon/weather.png" alt="WEATHER"></div>
-                    <span class="icon-name">WEATHER</span>
-                    <a href="images/all icon/weather.png" download class="download-btn"><i
-                            class="fa-solid fa-download"></i></a>
-                </div>
-                <!-- Icon: weight lifting.png -->
-                <div class="icon-card" style="animation-delay: 0.44s">
-                    <div class="img-container"><img src="images/all icon/weight lifting.png" alt="WEIGHT LIFTING"></div>
-                    <span class="icon-name">WEIGHT LIFTING</span>
-                    <a href="images/all icon/weight lifting.png" download class="download-btn"><i
-                            class="fa-solid fa-download"></i></a>
-                </div>
+            <div class="grid" id="iconGrid">
+                <!-- Icons will be loaded dynamically -->
             </div>
 
         </main>
@@ -1042,42 +791,140 @@
                 });
             }
 
-            // --- Real-Time Search Logic ---
-            const searchInput = document.querySelector('.search-box input');
-
-            function performSearch(term) {
-                const iconCards = document.querySelectorAll('.icon-card');
-                let found = false;
-
-                iconCards.forEach(card => {
-                    const nameElement = card.querySelector('.icon-name') || card.querySelector('h3');
-                    if (nameElement) {
-                        const name = nameElement.textContent.toLowerCase();
-                        if (name.includes(term)) {
-                            card.style.display = 'flex'; // Use flex to maintain layout
-                            found = true;
-                        } else {
-                            card.style.display = 'none';
-                        }
-                    }
-                });
-                // Optional: Show/Hide no results message dynamically
-            }
-
-            if (searchInput) {
-                searchInput.addEventListener('input', function () {
-                    performSearch(this.value.toLowerCase().trim());
+            // Logout Logic
+            const logoutBtn = document.getElementById('logoutBtn');
+            if (logoutBtn) {
+                logoutBtn.addEventListener('click', () => {
+                    localStorage.removeItem('iconscopeLoggedIn');
+                    localStorage.removeItem('iconscopeUser');
                 });
             }
+        });
+    </script>
+    <script>
+        const allIcons = [
 
-            // check URL params on load
+            { name: "ACCOUNTS", src: "images/website icon/accounts.png" },
+            { name: "FAVORITE", src: "images/website icon/favorite.png" },
+            { name: "SETTINGS", src: "images/website icon/settings.png" },
+            { name: "BUS KIOSK", src: "images/mobile icon/busk.png" },
+            { name: "CALL", src: "images/mobile icon/call.png" },
+            { name: "CAMERA", src: "images/mobile icon/camera.png" },
+            { name: "CHAT", src: "images/mobile icon/chat.png" },
+            { name: "GALLERY", src: "images/mobile icon/gallery.png" },
+            { name: "LOCATION", src: "images/mobile icon/location.png" },
+            { name: "MUSIC", src: "images/mobile icon/music.png" },
+            { name: "BACK", src: "images/navigation icon/back.png" },
+            { name: "CLOSE", src: "images/navigation icon/close.png" },
+            { name: "REFRESH", src: "images/navigation icon/refersh.png" },
+            { name: "AEROPLANE", src: "images/transport icon/aeroplane.png" },
+            { name: "AMBULANCE", src: "images/transport icon/ambulance.png" },
+            { name: "BUS", src: "images/transport icon/bus.png" },
+            { name: "CAR", src: "images/transport icon/car.png" },
+            { name: "ELECTRIC RICKSHAW", src: "images/transport icon/eletric ricksaw.png" },
+            { name: "RAILWAY SUPPORT", src: "images/transport icon/railway support.png" },
+            { name: "RECOVERY TRUCK", src: "images/transport icon/recovery truck.png" },
+            { name: "ROCKET", src: "images/transport icon/rocket.png" },
+            { name: "TRACTOR", src: "images/transport icon/tractor.png" },
+            { name: "TRAIN", src: "images/transport icon/train.png" },
+            { name: "BED", src: "images/home living icon/bed.png" },
+            { name: "COST OF LIVING", src: "images/home living icon/cost of living.png" },
+            { name: "CUPBOARD", src: "images/home living icon/cupboard.png" },
+            { name: "DINING ROOM", src: "images/home living icon/dinning room.png" },
+            { name: "FAMILY", src: "images/home living icon/family.png" },
+            { name: "FURNITURE", src: "images/home living icon/furnture.png" },
+            { name: "LIVING ROOM", src: "images/home living icon/living room.png" },
+            { name: "SOFA", src: "images/home living icon/sofa.png" },
+            { name: "TELEVISION", src: "images/home living icon/television.png" },
+
+            { name: "AFFILIATE THEME", src: "images/brands/affilatetheme.png" },
+            { name: "ALGOLIA", src: "images/brands/aigolia.png" },
+            { name: "AIRBNB", src: "images/brands/airbnb.png" },
+            { name: "AMAZON PAY", src: "images/brands/amazon pay.png" },
+            { name: "ANDROID", src: "images/brands/andriod.png" },
+            { name: "ANGULAR", src: "images/brands/angular.png" },
+            { name: "APPLE", src: "images/brands/apple.png" },
+            { name: "ARTSTATION", src: "images/brands/artstation.png" },
+            { name: "BLUESKY", src: "images/brands/bluesky.png" },
+            { name: "COMPANY", src: "images/brands/company.png" },
+            { name: "MARKETING", src: "images/brands/marketing.png" },
+            { name: "META", src: "images/brands/meta.png" },
+            { name: "THREADS", src: "images/brands/therads.png" },
+            { name: "CCTV CAMERA", src: "images/computer hardware icon/cctv camera.png" },
+            { name: "CHIP", src: "images/computer hardware icon/chip.png" },
+            { name: "FOLDERS", src: "images/computer hardware icon/folders.png" },
+            { name: "MOUSE", src: "images/computer hardware icon/mouse.png" },
+            { name: "PENDRIVE", src: "images/computer hardware icon/pendrive.png" },
+            { name: "PRINT", src: "images/computer hardware icon/print.png" },
+            { name: "SCREWDRIVER", src: "images/computer hardware icon/screwdriver.png" },
+            { name: "SPEAKER", src: "images/computer hardware icon/speaker.png" },
+            { name: "WIFI LOCATION", src: "images/computer hardware icon/wifi location.png" },
+            { name: "WIFI", src: "images/computer hardware icon/wifi.png" },
+            { name: "ACADEMIC STACK", src: "images/education icon/acadamic stack.png" },
+            { name: "GRADUATION BOOKS", src: "images/education icon/graducation bookd.png" },
+            { name: "GRADUATION CAP", src: "images/education icon/graducation cap.png" },
+            { name: "MORTARBOARD CAP", src: "images/education icon/motarboard cap.png" },
+            { name: "OPEN BOOK", src: "images/education icon/open book.png" },
+            { name: "STUDENT BACKPACK", src: "images/education icon/student backpack.png" },
+            { name: "TEACHING", src: "images/education icon/teaching.png" },
+            { name: "BAT SPORTS", src: "images/sports icon/batsports.png" },
+            { name: "BOXING", src: "images/sports icon/boxing.png" },
+            { name: "FOOTWEAR", src: "images/sports icon/footwear.png" },
+            { name: "BANK ACCOUNT", src: "images/payment icon/bank account.png" },
+            { name: "BILL", src: "images/payment icon/bill.png" },
+            { name: "CARD MACHINE", src: "images/payment icon/card machine.png" },
+            { name: "CREDIT CARD", src: "images/payment icon/credit card.png" },
+            { name: "ONLINE PAYMENT", src: "images/payment icon/online payment.png" },
+            { name: "PAYMENT GATEWAY", src: "images/payment icon/payment gateway.png" },
+            { name: "PAYMENT METHOD", src: "images/payment icon/payment method.png" },
+            { name: "PAYMENT", src: "images/payment icon/payment.png" },
+            { name: "SECURE PAYMENT", src: "images/payment icon/secure payment.png" },
+            { name: "WALLET", src: "images/payment icon/wallet.png" },
+        ];
+
+        const iconGrid = document.getElementById('iconGrid');
+        const searchInput = document.querySelector('.search-box input'); // Updated selector
+
+        function renderIcons(filters = "") {
+            iconGrid.innerHTML = "";
+            const term = filters.toLowerCase();
+            const filtered = allIcons.filter(icon => icon.name.toLowerCase().includes(term));
+
+            filtered.forEach((icon, index) => {
+                const card = document.createElement('div');
+                card.className = 'icon-card';
+                card.style.animationDelay = `${index * 0.02}s`; // Faster stagger
+                card.innerHTML = `
+                    <div class="img-container"><img src="${icon.src}" alt="${icon.name}"></div>
+                    <span class="icon-name">${icon.name}</span>
+                    <a href="${icon.src}" download class="download-btn"><i class="fa-solid fa-download"></i></a>
+                `;
+                iconGrid.appendChild(card);
+            });
+
+            if (filtered.length === 0) {
+                iconGrid.innerHTML = `<p style="grid-column: 1/-1; text-align: center; color: var(--text-light); padding: 20px;">No icons found matching "${filters}"</p>`;
+            }
+        }
+
+        // Initialize
+        renderIcons();
+
+        // Search Listener setup
+        if (searchInput) {
+            const newInput = searchInput.cloneNode(true);
+            searchInput.parentNode.replaceChild(newInput, searchInput);
+            newInput.addEventListener('input', (e) => {
+                renderIcons(e.target.value);
+            });
+            // Maintain initial search from URL params if present
             const urlParams = new URLSearchParams(window.location.search);
             const searchQuery = urlParams.get('q');
             if (searchQuery) {
-                if (searchInput) searchInput.value = searchQuery;
-                performSearch(searchQuery.toLowerCase());
+                newInput.value = searchQuery;
+                renderIcons(searchQuery);
             }
-        });
+        }
     </script>
 </body>
 
