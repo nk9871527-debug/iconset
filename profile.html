@@ -500,6 +500,30 @@
             <button class="btn btn-outline" onclick="window.location.href='settings.html'">Settings</button>
         </div>
 
+        <!-- Download History Section -->
+        <div class="downloads-section" style="margin-top: 50px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                <h2 style="font-size: 20px; font-weight: 700;">My Downloads</h2>
+                <button id="clearHistoryBtn"
+                    style="background: none; border: none; color: #ef4444; cursor: pointer; font-size: 13px; font-weight: 500; display: none;">Clear
+                    History</button>
+            </div>
+
+            <div class="grid" id="downloadsGrid"
+                style="display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 20px;">
+                <!-- Downloads will appear here -->
+                <div id="emptyState"
+                    style="grid-column: 1/-1; text-align: center; padding: 40px; color: #94a3b8; background: white; border-radius: 20px; border: 1px dashed #e2e8f0;">
+                    <i class="fa-solid fa-cloud-arrow-down"
+                        style="font-size: 30px; margin-bottom: 10px; opacity: 0.5;"></i>
+                    <p>No downloads yet. Start exploring!</p>
+                    <a href="all icons.html"
+                        style="display: inline-block; margin-top: 10px; color: var(--secondary); text-decoration: none; font-weight: 600; font-size: 14px;">Browse
+                        Icons &rarr;</a>
+                </div>
+            </div>
+        </div>
+
         <!-- Edit Form (Hidden by default) -->
         <div class="edit-form" id="editForm">
             <div class="form-group">
@@ -597,6 +621,89 @@
                         // alert("Profile updated!"); 
                     } else {
                         alert("Please fill in all fields.");
+                    }
+                });
+            }
+
+            // --- Download History Logic ---
+            const downloadsGrid = document.getElementById('downloadsGrid');
+            const emptyState = document.getElementById('emptyState');
+            const clearHistoryBtn = document.getElementById('clearHistoryBtn');
+            const downloadCountEl = document.querySelector('.stat-value'); // First stat value is downloads
+
+            function renderDownloads() {
+                const downloads = JSON.parse(localStorage.getItem('iconscopeDownloads') || '[]');
+
+                // Update Count Stats
+                if (downloadCountEl) {
+                    downloadCountEl.textContent = downloads.length;
+                }
+
+                if (downloads.length === 0) {
+                    downloadsGrid.innerHTML = '';
+                    downloadsGrid.appendChild(emptyState);
+                    emptyState.style.display = 'block';
+                    if (clearHistoryBtn) clearHistoryBtn.style.display = 'none';
+                    return;
+                }
+
+                if (clearHistoryBtn) clearHistoryBtn.style.display = 'block';
+                emptyState.style.display = 'none';
+                downloadsGrid.innerHTML = ''; // Clear current
+
+                downloads.forEach(icon => {
+                    const card = document.createElement('div');
+                    // reusing standard icon-card styles from other pages if available, 
+                    // but since profile might not have all CSS, adding inline styles for safety matches standard styling
+                    card.className = 'icon-card-profile';
+                    card.style.cssText = `
+                        background: white; 
+                        border-radius: 16px; 
+                        padding: 15px; 
+                        display: flex; 
+                        flex-direction: column; 
+                        align-items: center; 
+                        gap: 10px; 
+                        box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+                        position: relative;
+                        transition: transform 0.2s;
+                    `;
+
+                    card.innerHTML = `
+                        <div style="width: 50px; height: 50px; display: flex; align-items: center; justify-content: center;">
+                            <img src="${icon.src}" alt="${icon.name}" style="max-width: 100%; max-height: 100%;">
+                        </div>
+                        <span style="font-size: 12px; font-weight: 600; color: #334155; text-transform: uppercase;">${icon.name}</span>
+                        <a href="${icon.src}" download style="position: absolute; top: 10px; right: 10px; color: #cbd5e1; font-size: 14px;"><i class="fa-solid fa-download"></i></a>
+                    `;
+
+                    // Hover effect
+                    card.onmouseenter = () => { card.style.transform = 'translateY(-5px)'; card.style.boxShadow = '0 10px 25px rgba(0,0,0,0.1)'; };
+                    card.onmouseleave = () => { card.style.transform = 'translateY(0)'; card.style.boxShadow = '0 4px 20px rgba(0,0,0,0.05)'; };
+
+                    downloadsGrid.appendChild(card);
+                });
+            }
+
+            // Initial Render
+            renderDownloads();
+
+            // Clear History
+            if (clearHistoryBtn) {
+                clearHistoryBtn.addEventListener('click', () => {
+                    if (confirm('Are you sure you want to clear your download history?')) {
+                        localStorage.removeItem('iconscopeDownloads');
+                        // Update user count too? Maybe keep lifetime count but clear list. 
+                        // For now, let's sync count to list length for consistency.
+                        // Or if we want lifetime count, we shouldn't decrease it. 
+                        // But user typically expects "clearing history" to clear the view.
+
+                        // Let's just clear the list view but keep the "stat" if we were tracking lifetime separately.
+                        // But my tracker updates "downloads" count based on increments in 'iconscopeUser'.
+                        // Here I am displaying list length.
+                        // So I will just clear the list.
+
+                        renderDownloads();
                     }
                 });
             }
